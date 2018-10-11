@@ -9,12 +9,59 @@
 <body>
 	<!-- 定位区域 -->
 	<div class="side">
-		<span class=".icon-ren111" id="person"></span>
+		<div id="ren"><i class="iconfont icon-ren111" ></i></div>
 		<div class="sum">
-			<span class=".icon-gouwuche"></span>
-			<p>购<br/>物<br/>车</p>
+			<i class="iconfont icon-gouwuche"></i>
+			<p>购</p>
+			<p>物</p>
+			<p>车</p>
 		</div>
-		
+		<div id="xin">
+			<i class="iconfont icon-xin"></i>
+		</div>
+		<div id="weixin">
+			<i class="iconfont icon-weixin"></i>
+		</div>
+		<div id="erji">
+			<i class="iconfont icon-erji"></i>
+		</div>
+		<div id="backTop">
+			<i class="iconfont icon-fanhuidingbu" ></i>
+		</div>
+		<!-- 划过小人显示的登录注册 -->
+		<div class="reg">
+			<div class="cha"><img src="img/cha.jpg" alt=""/></div>
+			<div class="regImg">
+				<img src="img/reg.jpg" alt=""/>
+			</div>
+			<h4>请先登录哦！</h4>
+			<div class="regBtn">
+				<span class="denglu">登录</span>
+				<span class="zuce">注册</span>
+			</div>
+			<div class="regBot">
+				<span>我的订单</span>
+				<span>我的收藏</span>
+			</div>
+			<span class="reg_triangle"></span>
+		</div>
+		<!-- 划过购物车 -->
+		<div class="shopping">
+			<h3>购物车</h3>
+			<p>您的购物车还没有商品哦~再去逛逛吧~</p>
+			<span class="shop_triangle"></span>
+		</div>
+		<!-- 划过微信 -->
+		<div class="wenxinCode">
+			<img src="img/weixin.jpg" alt=""/>
+			<span class="wei_triangle">	
+			</span>
+		</div>
+		<!-- 划过返回顶部 -->
+		<div class="back">
+			返回顶部
+			<span class="back_triangle"></span>
+		</div>
 	</div>
 	<!-- 顶部区域 -->
 	<div class="top">
@@ -26,12 +73,28 @@
 			<div class="login_right">
 				<a href="">登录</a><img src="img/line.jpg" alt="" c class="line"/>
 				<a href="">注册</a><img src="img/line.jpg" alt="" c class="line"/>
-				<a href="">微信</a><img src="img/line.jpg" alt="" c class="line"/>
-				<a href="">微博</a><img src="img/line.jpg" alt="" c class="line"/>
-				<img src="img/phone.jpg" alt=""  class="phone" /><a href="">手机版</a><img src="img/line.jpg" alt="" c class="line"/>
+				<a href="" id="weixin2">微信</a><img src="img/line.jpg" alt="" c class="line"/>
+				<a href="" id="weibo2">微博</a><img src="img/line.jpg" alt="" c class="line"/>
+				<img src="img/phone.jpg" alt=""  class="phone" /><a href="" id="phone2">手机版</a><img src="img/line.jpg" alt="" c class="line"/>
 				<a href="">收藏梦芭莎</a><img src="img/line.jpg" alt="" c class="line"/>
-				<a href="">购物车</a>
+				<a href="" id="car2">购物车</a>
 				<img src="img/shopcar.jpg" alt="" class="car" />
+			</div>
+			<!-- 划过微信 -->
+			<div class="wei2">
+				<img src="img/wei2.jpg" alt=""/>
+			</div>
+			<!-- 划过微博 -->
+			<div class="weibo">
+				<img src="img/weibo.png" alt=""/>
+			</div>
+			<!-- 划过手机版 -->
+			<div class="shouji">
+				<img src="img/huaphone.jpg" alt=""/>
+			</div>
+			<!-- 划过购物车 -->
+			<div class="shopCar">
+				购物车还没有商品哟~欢迎选购！
 			</div>
 		</div>
 		<div class="top_imgs">
@@ -158,7 +221,6 @@
 		</div>
 		<!-- 轮播图 -->
 		<div id="roll">
-			
 		</div>
 		<!-- 优惠券 -->
 		<div class="voucher">
@@ -180,37 +242,51 @@
 				<a href="">立刻购买</a>
 			</div>
 			<div class="listImg">
-				<img src="img/l01.jpg" alt="" style="width:290px;height:363px">
-				<p>连衣裙绑腰带不规则下摆</p>
+				<img src="img/l02.jpg" alt="" style="width:290px;height:363px">
+				<p>休闲绣花鱼尾裙</p>
+				<h4>时尚绣花·开叉</h4>
+				<span>￥199</span>
+				<a href="">立刻购买</a>
+			</div>
+			<div class="listImg">
+				<img src="img/l03.jpg" alt="" style="width:290px;height:363px">
+				<p>时尚皮裙</p>
+				<h4>收腰显瘦·有质感</h4>
+				<span>￥230</span>
+				<a href="">立刻购买</a>
+			</div>
+			<div class="listImg">
+				<img src="img/l04.jpg" alt="" style="width:290px;height:363px">
+				<p>白色针织外套</p>
+				<h4>休闲·舒适</h4>
+				<span>￥399</span>
+				<a href="">立刻购买</a>
+			</div>
+			<div class="listImg">
+				<img src="img/l05.jpg" alt="" style="width:290px;height:363px">
+				<p>拼色时尚衬衫</p>
+				<h4>时尚·有型</h4>
+				<span>￥199</span>
+				<a href="">立刻购买</a>
+			</div>
+			<div class="listImg">
+				<img src="img/l06.jpg" alt="" style="width:290px;height:363px">
+				<p>不规则下摆连衣裙</p>
 				<h4>收腰显瘦·层次丰富</h4>
 				<span>￥199</span>
 				<a href="">立刻购买</a>
 			</div>
 			<div class="listImg">
-				<img src="img/l01.jpg" alt="" style="width:290px;height:363px">
-				<p>连衣裙绑腰带不规则下摆</p>
-				<h4>收腰显瘦·层次丰富</h4>
-				<span>￥199</span>
+				<img src="img/l07.jpg" alt="" style="width:290px;height:363px">
+				<p>九分休闲裤</p>
+				<h4>收腰显瘦·有质感</h4>
+				<span>￥299</span>
 				<a href="">立刻购买</a>
 			</div>
 			<div class="listImg">
-				<img src="img/l01.jpg" alt="" style="width:290px;height:363px">
-				<p>连衣裙绑腰带不规则下摆</p>
-				<h4>收腰显瘦·层次丰富</h4>
-				<span>￥199</span>
-				<a href="">立刻购买</a>
-			</div>
-			<div class="listImg">
-				<img src="img/l01.jpg" alt="" style="width:290px;height:363px">
-				<p>连衣裙绑腰带不规则下摆</p>
-				<h4>收腰显瘦·层次丰富</h4>
-				<span>￥199</span>
-				<a href="">立刻购买</a>
-			</div>
-			<div class="listImg">
-				<img src="img/l01.jpg" alt="" style="width:290px;height:363px">
-				<p>连衣裙绑腰带不规则下摆</p>
-				<h4>收腰显瘦·层次丰富</h4>
+				<img src="img/l08.jpg" alt="" style="width:290px;height:363px">
+				<p>露肩连衣裙</p>
+				<h4>收腰显瘦</h4>
 				<span>￥199</span>
 				<a href="">立刻购买</a>
 			</div>
@@ -230,9 +306,19 @@
 					</div>
 				</div>
 				<div class="brand_list">
-					<a href=""><img src="img/nv01.jpg" alt=""/></a>
+					<a href=""><img src="img/nv02.jpg" alt=""/></a>
 					<div class="br_listLeft">
-						<p>moonbasa梦芭莎优雅女装专场</p>
+						<p>度假风原创品牌</p>
+						<span>想度假，找度假小姐</span>
+					</div>
+					<div class="br_listRight">
+						<a href="">进入专场</a>
+					</div>
+				</div>
+				<div class="brand_list">
+					<a href=""><img src="img/nv03.jpg" alt=""/></a>
+					<div class="br_listLeft">
+						<p>moonbasa梦芭莎休闲女装专场</p>
 						<span>冬上新第二波</span>
 					</div>
 					<div class="br_listRight">
@@ -240,9 +326,9 @@
 					</div>
 				</div>
 				<div class="brand_list">
-					<a href=""><img src="img/nv01.jpg" alt=""/></a>
+					<a href=""><img src="img/nv04.jpg" alt=""/></a>
 					<div class="br_listLeft">
-						<p>moonbasa梦芭莎优雅女装专场</p>
+						<p>moonbasa梦芭莎内衣女装专场</p>
 						<span>冬上新第二波</span>
 					</div>
 					<div class="br_listRight">
@@ -250,9 +336,9 @@
 					</div>
 				</div>
 				<div class="brand_list">
-					<a href=""><img src="img/nv01.jpg" alt=""/></a>
+					<a href=""><img src="img/nv05.jpg" alt=""/></a>
 					<div class="br_listLeft">
-						<p>moonbasa梦芭莎优雅女装专场</p>
+						<p>MONTEAMOR蒙蒂埃莫高端男装</p>
 						<span>冬上新第二波</span>
 					</div>
 					<div class="br_listRight">
@@ -260,39 +346,9 @@
 					</div>
 				</div>
 				<div class="brand_list">
-					<a href=""><img src="img/nv01.jpg" alt=""/></a>
+					<a href=""><img src="img/nv06.jpg" alt=""/></a>
 					<div class="br_listLeft">
-						<p>moonbasa梦芭莎优雅女装专场</p>
-						<span>冬上新第二波</span>
-					</div>
-					<div class="br_listRight">
-						<a href="">进入专场</a>
-					</div>
-				</div>
-				<div class="brand_list">
-					<a href=""><img src="img/nv01.jpg" alt=""/></a>
-					<div class="br_listLeft">
-						<p>moonbasa梦芭莎优雅女装专场</p>
-						<span>冬上新第二波</span>
-					</div>
-					<div class="br_listRight">
-						<a href="">进入专场</a>
-					</div>
-				</div>
-				<div class="brand_list">
-					<a href=""><img src="img/nv01.jpg" alt=""/></a>
-					<div class="br_listLeft">
-						<p>moonbasa梦芭莎优雅女装专场</p>
-						<span>冬上新第二波</span>
-					</div>
-					<div class="br_listRight">
-						<a href="">进入专场</a>
-					</div>
-				</div>
-				<div class="brand_list">
-					<a href=""><img src="img/nv01.jpg" alt=""/></a>
-					<div class="br_listLeft">
-						<p>moonbasa梦芭莎优雅女装专场</p>
+						<p>SUORANG所然原创设计女装专场</p>
 						<span>冬上新第二波</span>
 					</div>
 					<div class="br_listRight">
@@ -304,16 +360,15 @@
 		<!-- 专栏分类 -->
 		<div class="column">
 			<div class="col_list">
-				<div class="woman">女装<span></span></div>
-				<div class="man">男装/男包<span></span></div>
-				<div class="bra">内衣<span></span></div>
-				<div class="womanshoes">女包/女鞋<span></span></div>
+				<div class="woman">女装<span class="span_tra"></span></div>
+				<div class="man">男装/男包<span class="span_tra"></span></div>
+				<div class="bra">内衣<span class="span_tra"></span></div>
+				<div class="womanshoes">女包/女鞋<span class="span_tra"></span></div>
 			</div>
 			<div class="colwomen_details details">
 				<div class="del_title">
 					<h4>女装品牌<span>WOMEN</span></h4>
 				</div>
-				
 				<div class="colImg">
 					<a href=""><img src="img/dujia1.jpg" alt=""/></a>
 					<div class="colImg_right">
@@ -329,67 +384,121 @@
 				</div>
 			</div>
 		</div>
-		<!--底部区域-->
-		<div class="bottom">
-			<div class="bot_top">
-				<div class="top_list">
-					<a href=""><h5>新手指南</h5></a>
-					<a href=""><p>注册新用户</p></a>
-					<a href=""><p>如何订购</p></a>
-					<a href=""><p>如何修改订单</p></a>
-					<a href=""><p>尺码对照表</p></a>
-				</div>
-				<div class="top_list">
-					<a href=""><h5>支付方式</h5></a>
-					<a href=""><p>支付方式</p></a>
-					<a href=""><p>账户提现及退款时效</p></a>
-					<a href=""><p>查看账户余额</p></a>
-				</div>
-				<div class="top_list">
-					<a href=""><h5>配送方式</h5></a>
-					<a href=""><p>配送费收取标准</p></a>
-					<a href=""><p>配送范围及配送时效</p></a>
-					<a href=""><p>签收注意事项</p></a>
-					<a href=""><p>海外订购</p></a>
-				</div>
-				<div class="top_list">
-					<a href=""><h5>退换货服务</h5></a>
-					<a href=""><p>退换货政策</p></a>
-					<a href=""><p>退换货流程</p></a>
-					<a href=""><p>隐私申明</p></a>
-				</div>
-				<div class="top_list">
-					<a href=""><h5>会员制度及优惠</h5></a>
-					<a href=""><p>优惠活动</p></a>
-					<a href=""><p>VIP优惠尊享</p></a>
-					<a href=""><p>大宗购物</p></a>
-					<a href=""><p>积分制度</p></a>
-				</div>
-				<div class="top_list">
-					<a href=""><h5>帮助中心</h5></a>
-					<a href=""><p>忘记密码</p></a>
-					<a href=""><p>常见问题</p></a>
-					<a href=""><p>在线客服</p></a>
-					<a href=""><p>联系我们</p></a>
-					<a href=""><p>专利平台</p></a>
-				</div>
-				<div class="top_list">
-					<a href=""><h5>咨询订购</h5></a>
-					<a href=""><p>400-716-2828</p></a>
-					<a href=""><h5>客户服务</h5></a>
-					<a href=""><p>400-716-7878</p></a>
-					<a href=""><h5>招商热线</h5></a>
-					<a href=""><p>400-716-0266</p></a>
-				</div>
-				<div class="top_listlast">
-					<img src="img/M4.png" alt="">
-				</div>
+		<!-- 更多活动推荐 -->
+		<div class="moreaActive">
+			<div class="lineMiddle">
+				<div class="midTxt">更多活动推荐</div>
 			</div>
-			<div class="bot_center">
-				
+			<div class="more_list">
+				<a href=""><img src="img/img1.jpg" alt=""/></a>
+				<p>18年冬季新品女装 前3天8折 后4天8.8折</p>
 			</div>
-			<div class="bot_bottom">
-				
+			<div class="more_list">
+				<a href=""><img src="img/img2.jpg" alt=""/></a>
+				<p>意式商务秋冬之选</p>
+			</div>
+			<div class="more_list">
+				<a href=""><img src="img/img3.jpg" alt=""/></a>
+				<p>后4天8.8折</p>
+			</div>
+			<div class="more_list">
+				<a href=""><img src="img/img4.jpg" alt=""/></a>
+				<p>温暖冬季 搜索新品的秘密</p>
+			</div>
+			<div class="more_list">
+				<a href=""><img src="img/img5.jpg" alt=""/></a>
+				<p>满赠定制围巾</p>
+			</div>
+			<div class="more_list">
+				<a href=""><img src="img/img6.jpg" alt=""/></a>
+				<p>学院回潮 冬装上新前三天8折</p>
+			</div>
+		</div>
+	</div>
+	<!--底部区域-->
+	<div class="bottom">
+		<div class="bot_top">
+			<div class="top_list">
+				<a href=""><h5>新手指南</h5></a>
+				<a href=""><p>注册新用户</p></a>
+				<a href=""><p>如何订购</p></a>
+				<a href=""><p>如何修改订单</p></a>
+				<a href=""><p>尺码对照表</p></a>
+			</div>
+			<div class="top_list">
+				<a href=""><h5>支付方式</h5></a>
+				<a href=""><p>支付方式</p></a>
+				<a href=""><p>账户提现及退款时效</p></a>
+				<a href=""><p>查看账户余额</p></a>
+			</div>
+			<div class="top_list">
+				<a href=""><h5>配送方式</h5></a>
+				<a href=""><p>配送费收取标准</p></a>
+				<a href=""><p>配送范围及配送时效</p></a>
+				<a href=""><p>签收注意事项</p></a>
+				<a href=""><p>海外订购</p></a>
+			</div>
+			<div class="top_list">
+				<a href=""><h5>退换货服务</h5></a>
+				<a href=""><p>退换货政策</p></a>
+				<a href=""><p>退换货流程</p></a>
+				<a href=""><p>隐私申明</p></a>
+			</div>
+			<div class="top_list">
+				<a href=""><h5>会员制度及优惠</h5></a>
+				<a href=""><p>优惠活动</p></a>
+				<a href=""><p>VIP优惠尊享</p></a>
+				<a href=""><p>大宗购物</p></a>
+				<a href=""><p>积分制度</p></a>
+			</div>
+			<div class="top_list">
+				<a href=""><h5>帮助中心</h5></a>
+				<a href=""><p>忘记密码</p></a>
+				<a href=""><p>常见问题</p></a>
+				<a href=""><p>在线客服</p></a>
+				<a href=""><p>联系我们</p></a>
+				<a href=""><p>专利平台</p></a>
+			</div>
+			<div class="top_list">
+				<a href=""><h5>咨询订购</h5></a>
+				<a href=""><p>400-716-2828</p></a>
+				<a href=""><h5>客户服务</h5></a>
+				<a href=""><p>400-716-7878</p></a>
+				<a href=""><h5>招商热线</h5></a>
+				<a href=""><p>400-716-0266</p></a>
+			</div>
+			<div class="top_listlast">
+				<img src="img/M4.png" alt="">
+			</div>
+		</div>
+		<div class="bot_center">
+			<img src="img/mbs1.jpg" alt=""/>
+			<img src="img/line3.jpg" alt="" class="line3" />
+			<img src="img/mbs2.jpg" alt=""/>
+			<img src="img/line3.jpg" alt="" class="line3" />
+			<img src="img/mbs4.jpg" alt=""/>
+		</div>
+		<div class="bot_bottom">
+			<div class="bottom_list">
+				<a href="">首页</a>
+				<a href="">公司简介</a>
+				<a href="">旗下品牌</a>
+				<a href="">零售店址</a>
+				<a href="">梦芭莎网盟</a>
+				<a href="">网店代理</a>
+				<a href="">网站地图</a>
+				<a href="">友情链接</a>
+			</div>			
+			<p>Copyright 2010-2019 梦芭莎官方网站，广州摩拉技术有限公司 All Right Reserved 粤B2-20080069号 <img src="img/logo_down.jpg" alt="" class="police" /> 粤公网安备44010302000075</p>
+			<div class="brandImgs">
+				<img src="img/mbs_f_01.jpg" alt=""/>
+				<img src="img/mbs_f_02.jpg" alt=""/>
+				<img src="img/logo_down.jpg" alt="" class="pol" />
+				<img src="img/mbs_f_03.jpg" alt=""/>
+				<img src="img/mbs_f_04.jpg" alt=""/>
+				<img src="img/mbs_f_05.jpg" alt=""/>
+				<img src="img/mbs_f_06.jpg" alt=""/>
+				<img src="img/mbs_f_07.jpg" alt=""/>
 			</div>
 		</div>
 	</div>
