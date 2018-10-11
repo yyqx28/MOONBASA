@@ -1,0 +1,1 @@
+$(document).ready(function(){var A=$("span[name=JsGetCms]");for(var B=0;B<A.length;B++){var C=A[B].id;MLCMS.getCMS(C)}});var MLCMS={getCMS:function(C){var A=$("#"+C).attr("cmsid");var B=$("#"+C).attr("islazy");if(A!=""){$.get("/Home/GetCms",{cmsid:A,islazy:B},function(D){if(D!=""){$("#"+C).html(D);if(B=="1"){$("#"+C+" img[data-original]").show().lazyload()}}})}}};
