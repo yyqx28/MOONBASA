@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录页面</title>
+	<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+	<div class="top">
+		<a href="www.moonbasa.com"><img src="img/M4_5.jpg" alt=""/></a>	
+	</div>
+	<div class="center">
+		<img src="img/M1_25.jpg" alt=""/>
+		<div class="imp">
+			<div class="imp_top">
+				<span class="imp_denglu">登录</span>
+				<span class="imp_zhuce">注册</span>
+			</div>
+			<div class="imp_bottom">
+				<input type="text" value="手机号/邮箱"  id="user" />
+				<img src="img/a1.jpg" alt="" class="userImg" />
+				<div class=" point" id="userpoint">
+					<img src="img/stop.jpg" alt=""/>
+					请输入邮箱或手机号！
+				</div>
+				<div class="mabox">
+					<input type="text" value="验证码" class="ma" />
+					<div id="randomMa">
+						<div id="randomMa_top">换一个</div>
+						<div id="randomMa_bottom"></div>
+					</div>
+				</div>
+				<div class=" point" id="codepoint">
+					<img src="img/stop.jpg" alt=""/>
+					请输入验证码！
+				</div>
+				<input type="text" value="请输入动态验证码" class="actma" />
+				<input type="button" value="获取动态验证码" class="getma" />
+				<div class=" point" id="actCodepoint">
+					<img src="img/stop.jpg" alt="">
+					请输入动态验证码！
+				</div>
+				<input type="text" value="密码" id="pwd" />
+				<div class=" point" id="pwdpoint">
+					<img src="img/stop.jpg" alt=""/>
+					请输入8~20位字母或数字！
+				</div>
+				<img src="img/a2.jpg" alt="" class="pwdImg" />
+				<input type="text" value="确定密码" id="pwdOk" />
+				<div class=" point" id="pwdpointOk">
+					<img src="img/stop.jpg" alt=""/>
+					两次密码输入不一致！
+				</div>
+				<img src="img/a2.jpg" alt="" class="pwdImgOk" />
+				<input type="submit" value="同意以下协议，提交" id="sub" />
+				<input type="checkbox" class="selectSub" />
+				<p>同意<span>梦芭莎注册条款</span></p>
+			</div>
+		</div>
+	</div>
+	<div class="bottom">
+		<div class="botLogin_list">
+			<a href="">首页</a>
+			<a href="">公司简介</a>
+			<a href="">旗下品牌</a>
+			<a href="">零售店址</a>
+			<a href="">梦芭莎网盟</a>
+			<a href="">网店代理</a>
+			<a href="">网站地图</a>
+			<a href="">友情链接</a>
+		</div>
+		<p>Copyright 2010-2019 梦芭莎官方网站，广州摩拉技术有限公司 All Right Reserved 粤B2-20080069号</p>
+	</div>
+</body>
+</html>
+<!-- <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script> -->
+<script type="text/javascript" src="js/tools.js"></script>
+<!-- <script type="text/javascript" src="js/login.js"></script> -->
+<script type="text/javascript" src="js/ajax.js"></script>
+<script>
+window.onload = function(){
+	// 表单验证
+	// 输入手机号或邮编
+	$("#user").onfocus = function(){
+		$("#user").value = "";
+		$("#user").style.cssText = "border-color:#e30165;";
+	}
+	$("#user").onblur = function(){
+		if($("#user").value){
+			$("#user").style.cssText = "border-color:#c9c9c9;";
+		}else{
+			$("#user").style.cssText = "border-color:#c9c9c9;";
+			$("#user").value = "手机号或邮编";
+		}
+		
+		if(check($("#user").value,"user")==true){
+			return;
+		}else{
+			$("#userpoint").style.visibility = "visible";
+		}
+	}
+	// 输入密码
+	$("#pwd").onfocus = function(){
+		$("#pwd").value = "";
+		$("#pwd").style.cssText = "border-color:#e30165;";
+	}
+	$("#pwd").onblur = function(){
+		if($("#pwd").value){
+			$("#pwd").style.cssText = "border-color:#c9c9c9;";
+		}else{
+			$("#pwd").style.cssText = "border-color:#c9c9c9;";
+			$("#pwd").value = "密码";
+		}
+		
+		if(check($("#pwd").value,"pwd")==true){
+			return;
+		}else{
+			$("#pwdpoint").style.visibility = "visible";
+		}
+	}
+	// 确认密码
+	$("#pwdOk").onfocus = function(){
+		$("#pwdOk").value = "";
+		$("#pwdOk").style.cssText = "border-color:#e30165;";
+	}
+	$("#pwdOk").onblur = function(){
+		if($("#pwdOk").value){
+			$("#pwdOk").style.cssText = "border-color:#c9c9c9;";
+		}else{
+			$("#pwdOk").style.cssText = "border-color:#c9c9c9;";
+			$("#pwdOk").value = "密码";
+		}
+		if($("#pwdOk").value==$("#pwd").value){
+			return;
+		}else{
+			$("#pwdpointOk").style.visibility = "visible";
+		}
+	}
+	function check(str,style){
+		switch(style){
+			case "user":
+			var pattern1=/^1\d{10}/gi;
+			var pattern2=/^\w+@\w+(\.\w+)+$/gi;
+			if(pattern1.test(str) || pattern2.test(str)){
+				return true;
+			}else{
+				return false;
+			}
+			break;
+			case "pwd":
+			var pattern=/^[a-z0-9][a-z0-9]{7,19}$/gi;
+			if(pattern.test(str)){
+				return true;
+			}else{
+				return false;
+			}
+			break;
+		}
+	}
+	// 随机获取验证码
+	$("#randomMa_top").onclick = function(){
+		let strCode = getNumber();
+		let strColor = getColor();
+		console.log(strCode);
+		console.log(strColor);
+		$("#randomMa_bottom").innerHTML = "请选择红色字母:"+strCode;
+		let arrCode = strCode.split("");
+		for(var i in arrCode){
+			let span = document.createElement("span");
+			span.innerHTML = arrCode[i];
+			span.style.color = "strColor";
+		}
+	}
+	function getNumber(){
+		let num=[];
+		for(var i=0;i<4;i++){
+			var ranNum = Math.ceil(Math.random() * 25);
+			num.push(String.fromCharCode(65+ranNum));
+		}
+		return num.join('');
+	}
+	function getColor(){
+		let str="#";
+		for(var i=0;i<6;i++){
+			str+=(parseInt(Math.random()*16)).toString(16);
+		}
+		return str;
+	}
+}
+</script>

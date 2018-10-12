@@ -10,10 +10,11 @@ $("#search").focus(function(){
 $("#search").blur(function(){
 	$("#search").val("秋冬新品，欲购从速！");
 });
-// 搜索后预结果
-$("#search").keydown(function(){
+
+$("#search").keyup(function(){
 	$("#result").css({display:"block"});
 });
+// 划过li
 $.each(
 	$(".result_top ul li"),function(){
 		$(this).hover(
@@ -25,11 +26,12 @@ $.each(
 			}
 		);
 });
+
 // 搜索后预结果中的点击关闭
 $(".result_bottom a").click(function(){
 	$("#result").css({display:"none"});
 });
-// 搜索提示
+// 搜索提示信息
 $.each(
 	$(".sapnlis a"),function(){
 		$(this).hover(
@@ -41,6 +43,7 @@ $.each(
 			}
 		);
 });
+
 // 菜单栏
 $.each(
 	$(".menu_list .list"),function(){
@@ -65,7 +68,7 @@ $.each(
 			}
 		);
 });
-// 专栏分类
+// 专栏分类（有问题）
 $.each(
 	$(".col_list div"),function(){
 		$(this).hover(
@@ -113,6 +116,7 @@ $("#ren").hover(
 		$(this).css({background:"#000"});
 	}
 );
+// 登录
 $(".denglu").hover(
 	function(){
 		$(this).css({background:"#fff",color:"#c10055"});
@@ -122,6 +126,7 @@ $(".denglu").hover(
 		$(this).css({background:"#c10055",color:"#fff"});
 	}
 );
+// 注册
 $(".zuce").hover(
 	function(){
 		$(this).css({background:"#c10055",color:"#fff"});
@@ -134,6 +139,10 @@ $(".zuce").hover(
 
 	}
 );
+$(".zuce").click(function(){
+	$(location).attr("href","login.html");
+});
+
 // 划过购物车
 $(".sum").hover(
 	function(){

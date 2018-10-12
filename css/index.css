@@ -1,3 +1,4 @@
+
 *{
 	margin:0;
 	padding:0;
@@ -59,6 +60,18 @@ ul{
 	font-size: 14px;
 	color:#fff;
 	text-align: center;
+
+}
+.sum .count{
+	width:18px;
+	height:18px;
+	background: #e50065;
+	border-radius: 50%;
+	font-size: 10px;
+	color: #fff;
+	text-align: center;
+	margin-left:8px;
+	margin-top:5px;
 }
 /*划过小人显示的登录注册*/
 .reg{
@@ -353,8 +366,10 @@ ul{
 	height:130px;
 } 
 .result_top ul li{
-	width:450px;
+	width:440px;
 	height:26px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 .result_bottom{
 	width:440px;
@@ -754,9 +769,10 @@ ul{
 }
 .bot_bottom .brandImgs{
 	margin:0 auto;
-	width:740px;
+	width:852px;
 	height:40px;
 	margin-top:25px;
+	overflow:hidden;
 }
 .brandImgs img{
 	float: left;

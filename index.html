@@ -15,6 +15,7 @@
 			<p>购</p>
 			<p>物</p>
 			<p>车</p>
+			<div class="count">0</div>
 		</div>
 		<div id="xin">
 			<i class="iconfont icon-xin"></i>
@@ -494,7 +495,7 @@
 				<img src="img/mbs_f_01.jpg" alt=""/>
 				<img src="img/mbs_f_02.jpg" alt=""/>
 				<img src="img/logo_down.jpg" alt="" class="pol" />
-				<img src="img/mbs_f_03.jpg" alt=""/>
+				<img src="img/logo2.jpg" alt=""/>
 				<img src="img/mbs_f_04.jpg" alt=""/>
 				<img src="img/mbs_f_05.jpg" alt=""/>
 				<img src="img/mbs_f_06.jpg" alt=""/>
@@ -506,6 +507,8 @@
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/Slider.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+
 <script>
 	$(function(){
 		let lun = new Slider(
@@ -514,4 +517,42 @@
 			10,"#fff","#000",true,-1,3000);
 	});
 </script>
+<!-- <script>
+	//搜索后的预结果
+	let data = null;
+	var lis = $("#result li");
+	$("#search").onkeyup = function(){
+		$("#result").style.cssText = "display:block";
+
+		let xhr = new XMLHttpRequest();
+		xhr.open("get","JSON/clothesCount.json",true);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				let str = xhr.responseText;
+				let data = JSON.parse(str);
+				showdata(data);
+			}
+		}
+		xhr.send();
+	}
+	function showData(data){
+		// data = JSON.parse(str);
+		// console.log(data);
+		let message = $("#search").value;
+		let season = data[message];
+		for(var i in lis){
+			let span_left = document.CreateElement("span");
+			span_left.style.cssText = "float:left;font-size:12px;line-height:26px;color:#3c3b3b";
+			span_left.innerHTML = season[i].styles;
+			lis[i].appendChild(span_left);
+			let span_right = document.CreateElement("span");
+			span_right.style.cssText = "float:right;font-size:12px;line-height:26px;color:#3c3b3b";
+			span_right.innerHTML = season[i].counts;
+			lis[i].appendChild(span_right);
+		}
+	}
+	ajax("get","JSON/clothesCount.json",
+			"",true,showData);
+</script> -->
+
 	

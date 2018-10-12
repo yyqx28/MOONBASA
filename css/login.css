@@ -1,0 +1,211 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	background: #cecccf;
+	padding-top: 24px;
+}
+a{
+	cursor: pointer;
+	text-decoration: none;
+}
+input{
+	outline: none;
+}
+/*顶部*/
+.top{
+	width:1017px;
+	margin: 0 auto;
+	overflow:hidden;
+}
+.top img{
+	float: left;
+}
+/*中部*/
+.center{
+	width:1017px;
+	height:576px;
+	background: #fff;
+	margin: 0 auto;
+	background:#fff;
+	margin-bottom: 115px;
+
+}
+.center img{
+	margin-top:23px;
+	margin-left: 85px;
+}
+.center .imp{
+	float: right;
+	width:400px;
+	height:570px;
+	margin-right:110px;
+}
+.imp_top{
+	height:50px;
+	font-size:12px;
+	line-height:50px; 
+	padding-left: 70px;
+	padding-right:70px;
+	text-align: center;
+}
+.imp_denglu{
+	display: inline-block;
+	width:50px;
+	height:50px;
+	color:#9f9f9f;
+	float: left;
+}
+.imp_zhuce{
+	display: inline-block;
+	width:50px;
+	height:50px;
+	color:#000;
+	float: right;
+	border-bottom: 2px solid #000;
+}
+.imp_bottom{
+	height:500px;
+	border:1px solid #dcdcdc;
+	padding-left:36px;
+	padding-right:36px;
+	padding-top:20px;
+	position: relative;
+}
+.imp_bottom input{
+	width:320px;
+	height:40px;
+	border:1px solid #c9c9c9;
+	border-radius: 5px;
+	display: inline-block;
+	vertical-align: middle;
+	font-size:12px;
+	color:#767676;
+	line-height:40px;
+	margin-top:10px; 
+}
+/*用户名*/
+.imp_bottom #user{
+	width:290px;
+	padding-left: 30px;
+}
+.imp_bottom .userImg{
+	margin:0;
+	position: absolute;
+	top:40px;
+	left:45px;
+}
+.point{
+	width:320px;
+	height:22px;
+	font-size: 12px;
+	color:#555555;
+	line-height: 22px;
+	visibility: hidden;
+}
+.point img{
+	margin:0;
+	vertical-align: middle;
+}
+/*验证码*/
+.imp_bottom .mabox{
+	height:60px;
+}
+.mabox .ma{
+	width:100px;
+	margin-top:20px;
+	padding-left:10px;
+}
+.mabox #randomMa{
+	width:188px;
+	height:60px;
+	float:right;
+	margin:0;
+}
+#randomMa #randomMa_top{
+	width:38px;
+	height:20px;
+	font-size:10px;
+	color: #ccc;
+	padding-left:150px;
+	cursor: pointer;
+}
+#randomMa #randomMa_bottom{
+	width:186px;
+	height:38px;
+	border:1px solid #000;
+
+	background: url(../img/bg.jpg) repeat-y;
+}
+/*动态验证码*/
+.imp_bottom .actma{
+	width:150px;
+	padding-left: 10px;
+}
+.imp_bottom .getma{
+	width:150px;
+	text-align: center;
+	border-radius: 0;
+	margin-left: 5px;
+}
+/*密码*/
+.imp_bottom #pwd{
+	width:290px;
+	padding-left: 30px;
+}
+.imp_bottom .pwdImg{
+	margin:0;
+	position: absolute;
+	top:270px;
+	left:45px;
+}
+/*确认密码*/
+.imp_bottom #pwdOk{
+	width:290px;
+	padding-left: 30px;
+}
+.imp_bottom .pwdImgOk{
+	margin:0;
+	position: absolute;
+	top:345px;
+	left:45px;
+}
+/*提交*/
+.imp_bottom #sub{
+	background: #e30165;
+	color: #fff;
+	margin-top:10px;
+	margin-bottom: 10px;
+}
+/*条款*/
+.imp_bottom .selectSub{
+	width:14px;
+	height:14px;
+	vertical-align: middle;
+	margin:0;
+}
+.imp_bottom p{
+	font-size: 12px;
+	display: inline-block;
+}
+.imp_bottom p span{
+	color: #e30164;
+}
+/*底部*/
+.bottom{
+	width:600px;
+	height:50px;
+	margin: 0 auto;
+	text-align: center;
+}
+.botLogin_list a{
+	font-size:12px;
+	color:#888888;
+	line-height:25px; 
+}
+.bottom p{
+	font-size:12px;
+	color:#989898;
+	line-height:25px; 
+}

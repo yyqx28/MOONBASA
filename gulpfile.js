@@ -25,6 +25,10 @@ gulp.task("copyFont",function(){
 	gulp.src("font/**/*")
 	.pipe(gulp.dest("D:\\phpStudy\\WWW\\item\\font"));
 });
+gulp.task("copyJSON",function(){
+	gulp.src("JSON/**/*")
+	.pipe(gulp.dest("D:\\phpStudy\\WWW\\item\\JSON"));
+});
 // 监听
 gulp.task("watchall",function(){
 	gulp.watch("index.html",["copyHtml"]);
@@ -32,5 +36,7 @@ gulp.task("watchall",function(){
 	gulp.watch("css/**/*",["copyCss"]);
 	gulp.watch("js/**/*",["copyJs"]);
 	gulp.watch("font/**/*",["copyFont"]);
+	gulp.watch("JSON/**/*",["copyJSON"]);
+
 });
 
