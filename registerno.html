@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>注册页面</title>
-	<link rel="stylesheet" href="css/login.css">
+	<title>无密码登录页面</title>
+	<link rel="stylesheet" href="css/registerno.css">
 </head>
 <body>
 	<div class="top">
@@ -13,12 +13,14 @@
 		<img src="img/M1_25.jpg" alt=""/>
 		<div class="imp">
 			<div class="imp_top">
-				<a href="register.html"><span class="imp_denglu">登录</span></a>
-				<a href="login.html"><span class="imp_zhuce">注册</span></a>
+				<a href="register.html"><span class="imp_normalDenglu">普通登录</span></a>
+				<a href="registerno.html"><span class="imp_nomaDenglu">无密码登录</span></a>
 			</div>
 			<div class="imp_bottom">
+				<img src="img/jiao.png" alt="" id="jiao" />
 				<form action="post" method="">
-					<input type="text" value="手机号/邮箱"  id="user"/>
+					<input type="text" value="手机号/邮箱/会员卡号"  id="user"/>
+					<div id="tick1"></div>
 					<img src="img/a1.jpg" alt="" class="userImg" />
 					<div class=" point" id="userpoint" >
 						<img src="img/stop.jpg" alt=""/>
@@ -35,27 +37,27 @@
 						<img src="img/stop.jpg" alt=""/>
 						请输入正确的验证码！
 					</div>
-					<input type="text" value="请输入动态验证码" class="actma" />
-					<input type="button" value="获取动态验证码" class="getma" />
-					<div class=" point" id="actCodepoint">
+					<input type="text" value="动态口令" class="act" id="wirtekoulin" />
+					<input type="button" value="获取手机动态口令" id="getkoulin" />
+					<div id="mask"></div>
+					<div class=" point" id="actKoulin">
 						<img src="img/stop.jpg" alt=""/>
-						请输入动态验证码！
+						请输入动态口令！
 					</div>
-					<input type="password" placeholder="密码" id="pwd" />
-					<div class=" point" id="pwdpoint">
-						<img src="img/stop.jpg" alt=""/>
-						请输入8~20位字母或数字！
+					<div id="forget">
+						<span id="forget_left"><a href="">忘记密码?</a></span>
+						<span id="forget_right"><a href="login.html">注册</a></span>
 					</div>
-					<img src="img/a2.jpg" alt="" class="pwdImg" />
-					<input type="password" placeholder="确定密码" id="pwdOk" />
-					<div class=" point" id="pwdpointOk">
-						<img src="img/stop.jpg" alt=""/>
-						两次密码输入不一致！
+					<input type="submit" value="立刻登录" id="sub" />
+					<div class="other">
+						其他登录方式：
+						<div class="icon">
+							<a href="" title="微信登录"><img src="img/wx.jpg" alt=""/></a>
+							<a href="" title="QQ登录"><img src="img/qqlogo0.jpg" alt=""/></a>
+							<a href="" title="支付宝登录"><img src="img/l_050.jpg" alt=""/></a>
+							<a href="" title="微博登录"><img src="img/weibologin0.jpg" alt=""/></a>
+						</div>
 					</div>
-					<img src="img/a2.jpg" alt="" class="pwdImgOk" />
-					<input type="submit" value="同意以下协议，提交" id="sub" />
-					<input type="checkbox" class="selectSub" id="check" />
-					<p>同意<span>梦芭莎注册条款</span></p>
 				</form>
 			</div>
 		</div>
@@ -76,4 +78,4 @@
 </body>
 </html>
 <script type="text/javascript" src="js/tools.js"></script>
-<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/registerno.js"></script>

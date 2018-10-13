@@ -126,6 +126,9 @@ $(".denglu").hover(
 		$(this).css({background:"#c10055",color:"#fff"});
 	}
 );
+$(".denglu").click(function(){
+	$(location).attr("href","register.html");
+});
 // 注册
 $(".zuce").hover(
 	function(){

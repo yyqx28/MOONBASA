@@ -6,56 +6,17 @@ $("#user").onfocus = function(){
 }
 $("#user").onblur = function(){
 		if($("#user").value){
-			$("#user").style.cssText = "border-color:#c9c9c9;";
+			$("#user").style.cssText = "border-color:#c9c9c9;background-color:#bcb769";
 		}else{
 			$("#user").style.cssText = "border-color:#c9c9c9;";
-			$("#user").value = "手机号或邮编";
+			$("#user").value = "手机号/邮箱/会员卡号";
 		}
-		
 		if(check($("#user").value,"user")==true){
 			$("#userpoint").style.visibility = "hidden";
+			$("#tick1").style.display = "block";
 			return;
 		}else{
 			$("#userpoint").style.visibility = "visible";
-		}
-}
-// 输入密码
-$("#pwd").onfocus = function(){
-		$("#pwd").placeholder = "";
-		$("#pwd").style.cssText = "border-color:#e30165;";
-}
-$("#pwd").onblur = function(){
-		if($("#pwd").value){
-			$("#pwd").style.cssText = "border-color:#c9c9c9;";
-		}else{
-			$("#pwd").style.cssText = "border-color:#c9c9c9;";
-			$("#pwd").placeholder = "密码";
-		}
-		
-		if(check($("#pwd").value,"pwd")==true){
-			$("#pwdpoint").style.visibility = "hidden";
-			return;
-		}else{
-			$("#pwdpoint").style.visibility = "visible";
-		}
-}
-// 确认密码
-$("#pwdOk").onfocus = function(){
-		$("#pwdOk").placeholder = "";
-		$("#pwdOk").style.cssText = "border-color:#e30165;";
-}
-$("#pwdOk").onblur = function(){
-		if($("#pwdOk").value){
-			$("#pwdOk").style.cssText = "border-color:#c9c9c9;";
-		}else{
-			$("#pwdOk").style.cssText = "border-color:#c9c9c9;";
-			$("#pwdOk").placeholder = "确认密码";
-		}
-		if($("#pwdOk").value==$("#pwd").value){
-			$("#pwdpointOk").style.visibility = "hidden";
-			return;
-		}else{
-			$("#pwdpointOk").style.visibility = "visible";
 		}
 }
 function check(str,style){
@@ -79,6 +40,7 @@ function check(str,style){
 			break;
 		}
 }
+
 // 随机获取验证码
 getCode();//页面加载即执行
 $("#randomMa_top").onclick = getCrrCode;
@@ -157,24 +119,46 @@ $("#testCode").onblur = function(){
 		$("#codepoint").style.visibility = "visible";
 	}
 }
-// 注册提交
+// 动态口令
+$("#wirtekoulin").onfocus = function(){
+		$("#wirtekoulin").value = "";
+		$("#wirtekoulin").style.cssText = "border-color:#e30165;";
+}
+$("#wirtekoulin").onblur = function(){
+		if($("#wirtekoulin").value){
+			$("#wirtekoulin").style.cssText = "border-color:#c9c9c9;background-color:#bcb769";
+		}else{
+			$("#wirtekoulin").style.cssText = "border-color:#c9c9c9;";
+			$("#wirtekoulin").value = "动态口令";
+		}
+		if(check($("#wirtekoulin").value,"user")==true){
+			$("#userpoint").style.visibility = "hidden";
+			$("#tick1").style.display = "block";
+			return;
+		}else{
+			$("#actKoulin").style.visibility = "visible";
+		}
+}
+// 获取动态口令蒙版消失
+$("#getkoulin").onclick = function(){
+	$("#mask").style.opacity = 1;
+}
+// 立即登录
 $("#sub").onclick = function(){
 	if($("#check").style.checked==checked){
 		// 1.创建对象
 		let xhr = new XMLHttpRequest();
 		// 2.设置参数
-		xhr.open("post","php/loginajax.php",true);
+		xhr.open("post","php/registerajax.php",true);
 		// 3.设置回调函数
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState==4&&xhr.status==200){
 				// 5.接收响应
 				let str = xhr.responseText;
-				if(str=="1"){
-					location.href="register.html";
-				}else if(str=="-1"){
-					alert("注册失败！");
-				}else{
-					alert("注册失败！服务器出错~");
+				if(str=="登录成功"){
+					location.href="index.html";
+				}else if(str=="登录失败"){
+					alert("登录失败！");
 				}
 			}
 		}

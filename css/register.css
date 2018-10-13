@@ -25,12 +25,11 @@ input{
 /*中部*/
 .center{
 	width:1017px;
-	height:576px;
+	height:520px;
 	background: #fff;
 	margin: 0 auto;
 	background:#fff;
 	margin-bottom: 115px;
-
 }
 .center img{
 	margin-top:23px;
@@ -44,34 +43,40 @@ input{
 }
 .imp_top{
 	height:50px;
-	font-size:12px;
+	font-size:14px;
 	line-height:50px; 
 	padding-left: 70px;
 	padding-right:70px;
 	text-align: center;
 }
-.imp_denglu{
+.imp_normalDenglu{
 	display: inline-block;
-	width:50px;
-	height:50px;
-	color:#9f9f9f;
-	float: left;
-}
-.imp_zhuce{
-	display: inline-block;
-	width:50px;
+	width:60px;
 	height:50px;
 	color:#000;
-	float: right;
+	float: left;
 	border-bottom: 2px solid #000;
 }
+.imp_nomaDenglu{
+	display: inline-block;
+	width:70px;
+	height:50px;
+	color:#9f9f9f;
+	float: right;
+}
 .imp_bottom{
-	height:500px;
+	height:440px;
 	border:1px solid #dcdcdc;
 	padding-left:36px;
 	padding-right:36px;
 	padding-top:20px;
 	position: relative;
+}
+.imp_bottom #jiao{
+	margin:0;
+	position: absolute;
+	top:-1px;
+	left:347px;
 }
 .imp_bottom input{
 	width:320px;
@@ -96,6 +101,17 @@ input{
 	top:40px;
 	left:45px;
 }
+.imp_bottom #tick1{
+	width:15px;
+	height: 15px;
+	position: absolute;
+	top: 43px;
+    left: 328px;
+	background: red;
+	background: url(../img/tick.png) ;
+	display: none;
+}
+
 .point{
 	width:320px;
 	height:22px;
@@ -108,47 +124,7 @@ input{
 	margin:0;
 	vertical-align: middle;
 }
-/*验证码*/
-.imp_bottom .mabox{
-	height:60px;
-}
-.mabox .ma{
-	width:100px;
-	margin-top:20px;
-	padding-left:10px;
-}
-.mabox #randomMa{
-	width:188px;
-	height:60px;
-	float:right;
-	margin:0;
-}
-#randomMa #randomMa_top{
-	width:38px;
-	height:20px;
-	font-size:10px;
-	color: #ccc;
-	padding-left:150px;
-	cursor: pointer;
-}
-#randomMa #randomMa_bottom{
-	width:171px;
-	height:38px;
-	border:1px solid #000;
-	padding-left: 15px;
-	background: url(../img/bg.jpg) repeat-y;
-}
-/*动态验证码*/
-.imp_bottom .actma{
-	width:150px;
-	padding-left: 10px;
-}
-.imp_bottom .getma{
-	width:150px;
-	text-align: center;
-	border-radius: 0;
-	margin-left: 5px;
-}
+
 /*密码*/
 .imp_bottom #pwd{
 	width:290px;
@@ -157,19 +133,49 @@ input{
 .imp_bottom .pwdImg{
 	margin:0;
 	position: absolute;
-	top:270px;
+	top:114px;
 	left:45px;
 }
-/*确认密码*/
-.imp_bottom #pwdOk{
-	width:290px;
-	padding-left: 30px;
-}
-.imp_bottom .pwdImgOk{
-	margin:0;
+.imp_bottom #tick2{
+	width:15px;
+	height: 15px;
 	position: absolute;
-	top:345px;
-	left:45px;
+	top: 120px;
+    left: 328px;
+	background: red;
+	background: url(../img/tick.png) ;
+	display: none;
+}
+/*忘记密码，注册*/
+.imp_bottom #forget{
+	width:320px;
+	height:25px;
+}
+#forget #forget_left a{
+	display: inline-block;
+	width:70px;
+	height:25px;
+	font-size:12px;
+	color:#666666;
+	line-height: 25px;
+	float: left;
+	cursor: pointer;
+}
+#forget #forget_left a:hover{
+	color:#e30165;
+}
+#forget #forget_right a{
+	display: inline-block;
+	width:30px;
+	height:25px;
+	font-size:12px;
+	color:#e30165;
+	line-height: 25px;
+	float: right;
+	cursor: pointer;
+}
+#forget_right a:hover {
+	text-decoration: underline;
 }
 /*提交*/
 .imp_bottom #sub{
@@ -178,20 +184,25 @@ input{
 	margin-top:10px;
 	margin-bottom: 10px;
 }
-/*条款*/
-.imp_bottom .selectSub{
-	width:14px;
-	height:14px;
-	vertical-align: middle;
+/*其他登录方式*/
+.imp_bottom .other{
+	width:260px;
+	height:39px;
+	margin-top:120px;
+	font-size:14px; 
+	color:#6f6f6f;
+	line-height: 39px;
+}
+.other .icon{
+	width:156px;
+	height:39px;
+	float: right;
+}
+.icon img{
 	margin:0;
+	float: left;
 }
-.imp_bottom p{
-	font-size: 12px;
-	display: inline-block;
-}
-.imp_bottom p span{
-	color: #e30164;
-}
+
 /*底部*/
 .bottom{
 	width:600px;
