@@ -1,11 +1,11 @@
 var gulp = require("gulp");
-// var sass = require("gulp-sass");
+var sass = require("gulp-sass");
 //repuire:相当于<script src="gulp.js"></script>
 //定义一个复制文件的任务
 //task函数的第一个参数：copyHtml是任务名
 //task函数的第二个参数：function是任务copyHtml对应的功能
 gulp.task("copyHtml",function(){
-	gulp.src("moon/*.html")
+	gulp.src("*.html")
 	.pipe(gulp.dest("D:\\phpStudy\\WWW\\item"));
 });
 gulp.task("copyImg",function(){
@@ -32,14 +32,20 @@ gulp.task("copyPhp",function(){
 	gulp.src("php/**/*")
 	.pipe(gulp.dest("D:\\phpStudy\\WWW\\item\\php"));
 });
+gulp.task("sass",function(){
+	gulp.src("sass/**/*.scss")
+	.pipe(sass())
+	.pipe(gulp.dest("D:\\phpStudy\\WWW\\item\\css"));
+});
 // 监听
 gulp.task("watchall",function(){
-	gulp.watch("moon/*.html",["copyHtml"]);
+	gulp.watch("*.html",["copyHtml"]);
 	gulp.watch("img/**/*",["copyImg"]);
 	gulp.watch("css/**/*",["copyCss"]);
 	gulp.watch("js/**/*",["copyJs"]);
 	gulp.watch("font/**/*",["copyFont"]);
 	gulp.watch("JSON/**/*",["copyJSON"]);
 	gulp.watch("php/**/*",["copyPhp"]);
+	gulp.watch("sass/**/*.scss",["sass"]);
 });
 

@@ -1,0 +1,73 @@
+/*底部区域*/
+.bottom{
+	width:1263px;
+	height:340px;
+}
+.bot_top{
+	height:138px;
+	background: #ececec;
+	padding-left:70px;
+	padding-top:14px;
+}
+.bot_top .top_list{
+	font-size:12px;
+	margin-right:60px;
+	float: left;
+}
+.top_list h5{
+	color: #000;
+}
+.top_list p{
+	color: #7f7f7f;
+}
+.bot_center{
+	height:70px;
+	overflow:hidden;
+	padding-left:312px;
+	padding-top:15px;
+}
+.bot_center img{
+	float: left;
+}
+.bot_center .line3{
+	margin-left:16px;
+	margin-right:16px;
+}
+.bot_bottom{
+	height:107px;
+	padding-top:20px;
+	padding-bottom: 50px;
+
+}
+.bot_bottom .bottom_list{
+	margin:0 auto;
+	width:430px;
+	height:25px;
+}
+.bottom_list a{
+	font-size:12px;
+	color:#797979;
+}
+.bot_bottom p{
+	font-size:12px;
+	color:#797979;
+	text-align: center;
+} 
+.bot_bottom .police{
+	width:18px;
+	height:18px;
+}
+.bot_bottom .brandImgs{
+	margin:0 auto;
+	width:852px;
+	height:40px;
+	margin-top:25px;
+	overflow:hidden;
+}
+.brandImgs img{
+	float: left;
+}
+.brandImgs .pol{
+	width:50px;
+	height:40px;
+}
