@@ -1,32 +1,143 @@
-/*
-Error: Invalid CSS after "brandhui.scss": expected "{", was ""
-        on line 1 of brandhui.scss
-
-1: brandhui.scss
-
-Backtrace:
-brandhui.scss:1
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:1207:in `expected'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:1137:in `expected'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:1132:in `tok!'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:665:in `block'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:658:in `ruleset'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:684:in `block_child'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:674:in `block_contents'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:125:in `stylesheet'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:41:in `parse'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/engine.rb:406:in `_to_tree'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/engine.rb:298:in `render_with_sourcemap'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/exec/sass_scss.rb:391:in `run'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/exec/sass_scss.rb:63:in `process_result'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/exec/base.rb:52:in `parse'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/lib/sass/exec/base.rb:19:in `parse!'
-D:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.24/bin/sass:13:in `<top (required)>'
-D:/Ruby21-x64/bin/sass:23:in `load'
-D:/Ruby21-x64/bin/sass:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"brandhui.scss\": expected \"{\", was \"\"\A         on line 1 of brandhui.scss\A \A 1: brandhui.scss"; }
+/*中部区域*/
+.center{
+	width:100%;
+	position: relative;
+}
+/*导航栏*/
+.center .nav{
+	width:943px;
+	height:45px;
+	padding-left:320px;
+}
+.nav a{
+	font-size:14px;
+	line-height:45px;
+	color:#727272;
+	margin-left:33px;
+}
+.nav .brandtxt{
+	color:#e60063;
+}
+.nav a:hover{
+	color:#e60063;
+}
+/*轮播图*/
+#roll{
+	height:426px;
+}
+/*精选品牌*/
+.choice img{
+	float: left;
+}
+/*品牌活动*/
+.brandActive .activeList{
+	width:999px;
+	height: 41px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+}
+.activeList a{
+	display: inline-block;
+	width:194px;
+	height:41px;
+	border:1px solid #000;
+	font-size: 20px;
+	color:#000;
+	text-align: center;
+	line-height: 41px;
+}
+.activeList .recommend{
+	background: #000;
+	color: #fff;
+}
+.activeList a:hover{
+	background: #000;
+	color: #fff;
+}
+.brandActive .activeTop{
+	margin-left:32px;
+}
+.brandActive .activeImgs{
+	width:1200px;
+	height:380px;
+	margin: 0 auto;
+	margin-top: 20px;
+	padding-bottom: 60px;
+}
+.activeImgs .activeImgList{
+	width:224px;
+	height:380px;
+	float: left;
+	margin-right: 20px;
+}
+.activeImgs .activeImgList:last-child{
+	margin-right: 0px;
+}
+.activeImgList img{
+	width:224px;
+	height:305px;
+	margin-bottom: 20px;
+}
+.activeImgList span{
+	margin-left:10px;
+	display: inline-block;
+	width:195px;
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	font-size: 14px;
+	color:#000;
+	text-align: center;
+}
+.activeImgList p{
+	color: #e80561;
+	font-size:12px;
+	text-align: center;
+	margin-top: 10px;
+}
+/*更多活动推荐*/
+.moreaActive{
+	height:516px;
+	background:#f7f7f7;
+	overflow:hidden;
+	padding:62px 0 62px 33px;
+}
+.moreaActive .lineMiddle{
+	width:816px;
+	height: 1px;
+	background: #c6c6c6;
+	margin: 0 auto;
+	position: relative;
+	margin-bottom: 48px;
+}
+.lineMiddle .midTxt{
+	position: absolute;
+	top:-12px;
+	left:300px;
+	width:210px;
+	height:30px;
+	font-size:28px;
+	color:#000; 
+	line-height:28px;
+	background: #f7f7f7;
+	text-align: center;
+}
+.moreaActive .more_list{
+	width:384px;
+	height:214px;
+	background: #fff;
+	margin-left:20px;
+	margin-bottom: 20px;
+	float: left;
+	border:1px solid #e3e1e2;
+}
+.more_list img{
+	width:384px;
+	height:182px;
+}
+.more_list p{
+	font-size:;
+	color:;
+	line-height: 30px;
+	margin-left:15px;
+}

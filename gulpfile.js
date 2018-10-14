@@ -1,5 +1,5 @@
 var gulp = require("gulp");
-var sass = require("gulp-sass");
+// var sass = require("gulp-sass");
 //repuire:相当于<script src="gulp.js"></script>
 //定义一个复制文件的任务
 //task函数的第一个参数：copyHtml是任务名
@@ -46,6 +46,6 @@ gulp.task("watchall",function(){
 	gulp.watch("font/**/*",["copyFont"]);
 	gulp.watch("JSON/**/*",["copyJSON"]);
 	gulp.watch("php/**/*",["copyPhp"]);
-	gulp.watch("sass/**/*.scss",["sass"]);
+	// gulp.watch("sass/**/*.scss",["sass"]);
 });
 

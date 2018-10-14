@@ -3,8 +3,128 @@
 <head>
 	<meta charset="UTF-8">
 	<title>品牌荟</title>
+	<link rel="stylesheet" href="css/brandhui.css">
+	<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+	<link rel="stylesheet" href="css/publicTop.css">
+	<link rel="stylesheet" href="css/publicBottom.css">
 </head>
 <body>
-	
+	<div class="topBox">
+		<!--顶部区域 -->
+	</div>
+	<!--中部区域 -->
+	<div class="center">
+		<!-- 导航栏 -->
+		<div class="nav">
+			<a href="index.html">首页</a>
+			<a href="brandhui.html" class="brandtxt">品牌荟</a>
+			<a href="">发现潮流</a>
+			<a href="">巨划算</a>
+			<a href="">美国馆</a>
+			<a href="">馆名品</a>
+			<a href="">原创荟</a>
+		</div>
+		<!-- 轮播图 -->
+		<div id="roll">
+		</div>
+		<!-- 精选品牌 -->
+		<div class="choice">
+			<a href=""><img src="img/M4_23_193743_03.jpg" alt=""></a>
+
+			<a href=""><img src="img/M8_14_110131.jpg" alt=""/></a>
+			<a href=""><img src="img/M9_25_133434_02.jpg" alt=""/></a>
+			<a href=""><img src="img/M9_25_180814.jpg" alt=""/></a>
+			<a href=""><img src="img/M9_12_162443.jpg" alt=""/></a>
+			<a href=""><img src="img/M8_6_144227.jpg" alt=""/></a>
+			<a href=""><img src="img/M10_9_105148.jpg" alt=""/></a>
+		</div>
+		<!-- 品牌活动 -->
+		<div class="brandActive">
+			<img src="img/M4_23_193743_05.jpg" alt=""/>
+			<div class="activeList">
+				<a href="" class="recommend">推荐</a>
+				<a href="">女装</a>
+				<a href="">内衣</a>
+				<a href="">男装</a>
+				<a href="">鞋包</a>
+			</div>
+			<img src="img/activeTop.png" alt="" class="activeTop" />
+			<div class="activeImgs">
+				<div class="activeImgList">
+				 	<img src="img/461218401-120-01-L.jpg" alt="">
+				 	<span>梦芭莎时尚创意罗纹织带花毛呢冬装新品</span>
+					<p>￥237.00</p>
+				</div>
+				<div class="activeImgList">
+				 	<img src="img/467318401-009-01-L.jpg" alt="">
+				 	<span>梦芭莎时尚创意罗纹织带花毛呢冬装新品</span>
+					<p>￥237.00</p>
+				</div>
+				<div class="activeImgList">
+				 	<img src="img/467118423-009-01-L.jpg" alt="">
+				 	<span>梦芭莎时尚创意罗纹织带花毛呢冬装新品</span>
+					<p>￥237.00</p>
+				</div>
+				<div class="activeImgList">
+				 	<img src="img/460918403-126-01-L.jpg" alt="">
+				 	<span>梦芭莎时尚创意罗纹织带花毛呢冬装新品</span>
+					<p>￥237.00</p>
+				</div>
+				<div class="activeImgList" >
+				 	<img src="img/460918405-076-01-L.jpg" alt="">
+				 	<span>梦芭莎时尚创意罗纹织带花毛呢冬装新品</span>
+					<p>￥237.00</p>
+				</div>
+			</div>
+		</div>
+		<!-- 更多活动推荐 -->
+		<div class="moreaActive">
+			<div class="lineMiddle">
+				<div class="midTxt">更多活动推荐</div>
+			</div>
+			<div class="more_list">
+				<a href=""><img src="img/img1.jpg" alt=""/></a>
+				<p>18年冬季新品女装 前3天8折 后4天8.8折</p>
+			</div>
+			<div class="more_list">
+				<a href=""><img src="img/img2.jpg" alt=""/></a>
+				<p>意式商务秋冬之选</p>
+			</div>
+			<div class="more_list">
+				<a href=""><img src="img/img3.jpg" alt=""/></a>
+				<p>后4天8.8折</p>
+			</div>
+			<div class="more_list">
+				<a href=""><img src="img/img4.jpg" alt=""/></a>
+				<p>温暖冬季 搜索新品的秘密</p>
+			</div>
+			<div class="more_list">
+				<a href=""><img src="img/img5.jpg" alt=""/></a>
+				<p>满赠定制围巾</p>
+			</div>
+			<div class="more_list">
+				<a href=""><img src="img/img6.jpg" alt=""/></a>
+				<p>学院回潮 冬装上新前三天8折</p>
+			</div>
+		</div>
+	</div>	
+	<div class="bottomBox">
+		<!--底部区域 -->
+	</div>
 </body>
 </html>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/Slider.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/publicTop.js"></script>
+<script>
+	$(function(){
+		let lun = new Slider(
+			$("#roll"),1220,426,
+			["img/brandbinner1.png","img/brandbinner2.png","img/brandbinner3.png","img/brandbinner4.png","img/brandbinner5.png"],
+			10,"#fff","#000",true,-1,3000);
+	});
+	$(".topBox").load("publicTop.html");
+	$(".bottomBox").load("publicBottom.html");
+</script>
