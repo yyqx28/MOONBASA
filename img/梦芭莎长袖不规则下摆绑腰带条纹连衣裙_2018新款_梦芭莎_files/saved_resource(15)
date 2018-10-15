@@ -1,0 +1,774 @@
+(function($) {
+  $.mola = $.extend(
+    {
+      appointment: function(options) {
+        var defualt = {
+          template: "templateappointment",
+          trigger: "apponit",
+          event: "click",
+          ok: "#J_shop_comfire",
+          cancel: "#J_shop_cancel",
+          shopSelect: "#J_shop_selected",
+          shopList: "#J_shop_list"
+        };
+        defualt = $.extend(defualt, options || {});
+        var T;
+        var $tpl = $("[mola=" + defualt.template + "]").html(),
+          $trigger = $("[mola=" + defualt.trigger + "]"),
+          DATA = {
+            colorsize: "",
+            mobile: "",
+            shop: ""
+          },
+          isNoAppoint = false,
+          // 20170927 开始
+          Person = function(selfParent) {
+            (this.selectedPro = ""), //当前选中的省
+              (this.selectedCity = ""), //当前选中的市
+              (this.selectedShop = ""), //当前选中的店
+              (this.proviceList = ""), //通过交互获取到省区的返回值
+              (this.cityList = ""), //通过交互获取到市区的返回值
+              (this.shopList = ""), //通过交互获取到门店的返回值
+              (this.city_code = ""), //点击获取到的城市编码
+              (this.city_name = ""), //点击获取到的城市名称
+              (this.page_index = 1), //页数，来控制css的当前页数的样式
+              (this.parent = selfParent), //传入的父级，通过他来区分两个模本并控制两个模本的字符串的转换
+              (this.isShowCity = false), //用来判断省是否已选，选了市区那里才能点击
+              (this.isShowStore = false), //用来判断市区是否已选，选了店面那里才能点击
+              (this.ishasPro = false); //判断是否已有省
+          },
+          shopAllInfo = new Person(".shop-list"),
+          noAppointInfo = new Person("#shop_list_show"),
+          addrStylecode = "",
+          // 20170927 结束
+
+          is_show_appoint = $("#hdAppointTryCloth").val(),
+          $body = $("body"),
+          $auto_dialog = $("#dialogmessage"),
+          $shop_list_tpl = $('[mola="templatestorelist"]').html();
+        var url = {
+          setAppointment: "/item/RecordWareSubcribe",
+          getProviceInfo: "/item/GetPrinceCity",
+          getShopLIst: "/item/GetO2OShopList"
+        };
+        // if ($trigger.length <= 0) {
+        //     return
+        // };
+        getProviceShow();
+
+        function init() {
+          if (
+            !(
+              is_show_appoint == 0 ||
+              is_show_appoint == "" ||
+              is_show_appoint == "undefined"
+            )
+          ) {
+            event();
+            $trigger.show();
+          }
+        }
+
+        function event() {
+          $trigger.bind(defualt.event, function() {
+            $.post("item/islogin", function(login_data) {
+              if (login_data.Code == 2) {
+                $.mola.ifrmlogin({
+                  loginback: function() {
+                    $trigger.trigger(defualt.event);
+                  },
+                  registerback: function() {
+                    $trigger.trigger(defualt.event);
+                  },
+                  hostidx: 0
+                });
+              } else {
+                DATA.mobile = isNull(login_data.Data);
+                /*20170926 添加 获取省*/
+                getProvice();
+              }
+            });
+          });
+
+          $body.delegate(defualt.cancel, "click", function() {
+            closeAppointDialog();
+          });
+          $body.delegate(defualt.ok, "click", function() {
+            var appoint_data = {
+              StyleCode: $("#J_hd_warecode")
+                .val()
+                .split(",")[0]
+                .split("-")[0],
+              WareCode: $("#J_hd_warecode")
+                .val()
+                .split(",")[0],
+              BeginDate: changeDateFormat(DATA.BeginDate),
+              EndDate: $("#J_date_end").val(),
+              mobileCode: $("#J_mobile").val(),
+              shopCode: $(".J_shop_name").text(),
+              O2OShopCode: $("#J_appoint_dialog")
+                .find(".J_shop_selected")
+                .attr("data-shopcode")
+            };
+            var warn = $("#J_appoint_warn");
+            if (!isMobile(appoint_data.mobileCode)) {
+              warn.html("* 请输入正确的手机号码！").show();
+              return;
+            }
+            if (appoint_data.WareCode == "") {
+              warn.html("* 请选择尺码！").show();
+              return;
+            }
+            if (appoint_data.shopCode == "请选择门店~") {
+              warn.html("* 请选择门店！").show();
+              return;
+            }
+            $.post(
+              url.setAppointment,
+              appoint_data,
+              function(data) {
+                if (data.Result.Data) {
+                  closeAppointDialog();
+                  autoDialog(data.Result.Message);
+                  warn.hide();
+                } else {
+                  warn.html("* " + data.Result.Message).show();
+                }
+              },
+              "json"
+            );
+          });
+          $body.delegate(".J_color", "click", function() {
+            var _this = $(this);
+            var _size = $("#J_appoint_dialog")
+              .find(".size")
+              .find(".J_size");
+            _this
+              .addClass("seldon")
+              .siblings()
+              .removeClass("seldon");
+            var color = _this.attr("color");
+            _size
+              .filter(":not([color=" + color + "])")
+              .hide()
+              .end()
+              .filter("[color=" + color + "]")
+              .show()
+              .eq(0)
+              .addClass("selon")
+              .siblings()
+              .removeClass("selon");
+            if (_ctip[0]) {
+              _ctip.text(_this.attr("title"));
+            }
+            $("#J_hd_warecode").val("");
+          });
+          $body.delegate(".J_size", "click", function() {
+            var _this = $(this);
+            var content = _this.attr("warecode");
+            var warecode = content.split(",");
+            var stylecode = warecode[0].split("-")[0];
+            _this
+              .addClass("selon")
+              .siblings()
+              .removeClass("selon");
+            $("#J_hd_warecode").val(content);
+          });
+
+          $body.delegate(".J_shop_selected", "click", function(event) {
+            var $icon = $(".trigle-icon");
+            var $ul = $(this).next();
+            if ($ul.css("display") == "block") {
+              $ul.hide();
+              $icon.addClass("trigle-up").removeClass("trigle-down");
+            } else {
+              $ul.show();
+              $icon.removeClass("trigle-up").addClass("trigle-down");
+            }
+            return false;
+          });
+
+          $body.bind("click", function() {
+            var $shop_list = $(".J_shop_list");
+            if ($shop_list.length > 0 && $shop_list.is(":visible")) {
+              $shop_list.slideUp("fast");
+            }
+          });
+
+          $body.delegate(".J_shop_information", "click", function() {
+            var $ul = $(this).closest(".J_shop_list");
+            var $content = $(".J_shop_selected");
+            var $shop = $content.find(".J_shop_name");
+            var $shop_code = $(this).attr("data-code");
+            var $shop_name = $(this).attr("data-name");
+            $ul.hide();
+            $content.attr("data-shopcode", $shop_code);
+            $shop.html($shop_name);
+          });
+
+          //20171011点击关闭按钮
+          $body.delegate(".ui-dialog-titlebar-close", "click", function() {
+            var $icon = $(".trigle-icon");
+            var $ul = $(this)
+              .closest(".ui-dialog")
+              .find(".J_shop_list");
+            $ul.hide();
+            $icon.addClass("trigle-up").removeClass("trigle-down");
+          });
+
+          // 20170926添加 点击省份
+          $body.delegate(".al_panel1 li", "click", function() {
+            var that = $(this),
+              code = that.attr("data-code"),
+              pro_name = that.attr("data-name");
+            shopAllInfo.page_index = 1; //使页数为1
+            noAppointInfo.page_index = 1; //使页数为1
+            getCity(code, pro_name);
+          });
+
+          // 20170926添加 点击市区
+          $body.delegate(".al_panel2 li", "click", function() {
+            var city_code = $(this).attr("data-code");
+            var city_name = $(this).attr("data-name");
+            // console.log(Person.city_code);
+            if (isNoAppoint) {
+              clickCityChang(noAppointInfo, city_code, city_name);
+            } else {
+              clickCityChang(shopAllInfo, city_code, city_name);
+            }
+
+            getShop(city_code, city_name, 1);
+          });
+
+          //isNoAppoint用来判断是预约门店的模本还是外面的模本
+          $body.delegate("#shop_list_show", "click", function() {
+            isNoAppoint = true;
+          });
+
+          $body.delegate("#J_appoint_dialog", "click", function() {
+            isNoAppoint = false;
+          });
+
+          // 省份的点击事件
+          $body.delegate(".adr_list_tit li", "click", function() {
+            var that = $(this);
+            var index = getIdIndex(that);
+            //点击指定标题显示指定的面板
+            setTimeout(function() {
+              if (isNoAppoint) {
+                showPanel(that, index, noAppointInfo);
+              } else {
+                showPanel(that, index, shopAllInfo);
+              }
+            }, 100);
+          });
+
+          //点击地图触发的事件(阻止事件冒泡)
+          $body.delegate(".J_MapUrl", "click", function(event) {
+            event.stopPropagation(); //阻止事件冒泡即可
+          });
+
+          //点击地图触发的事件(阻止事件冒泡)
+          $body.delegate(".ui-dialog-titlebar-close", "click", function(event) {
+            event.stopPropagation(); //阻止事件冒泡即可
+          });
+
+          //分页的点击部分
+          $body.delegate(".al_panel_page li", "click", function(event) {
+            var page_index = $(this).text();
+            shopAllInfo.page_index = page_index;
+            noAppointInfo.page_index = page_index;
+            setTimeout(function() {
+              if (isNoAppoint) {
+                getShop(
+                  noAppointInfo.city_code,
+                  noAppointInfo.city_name,
+                  page_index
+                );
+              } else {
+                getShop(
+                  shopAllInfo.city_code,
+                  shopAllInfo.city_name,
+                  page_index
+                );
+              }
+            }, 100);
+          });
+        }
+
+        //点击指定标题显示指定的面板 （that:传过来的this index：点击的面板的index值 storeList：当前点击需要改变的实例对象）
+        function showPanel(that, index, storeList) {
+          if (
+            index == 1 ||
+            (index == 2 && storeList.isShowCity) ||
+            (index == 3 && storeList.isShowStore)
+          ) {
+            showActive(that);
+            var that_panel = $(".al_panel" + index);
+            var storeListParent = storeList.parent;
+            $(storeListParent)
+              .find(".al_panel" + index)
+              .show()
+              .siblings()
+              .hide();
+          }
+        }
+
+        //点击城市时 城市编码和城市名字做出相应的改变  storeList:当前点击需要改变的实例对象
+        function clickCityChang(storeList, cityCode, cityName) {
+          storeList.city_code = cityCode;
+          storeList.city_name = cityName;
+          storeList.page_index = 1; //使页数为1
+        }
+
+        // 20171012 一开始执行
+        function getProviceShow() {
+          $.post(
+            url.getProviceInfo,
+            function(d) {
+              if (!noAppointInfo.ishasPro) {
+                noAppointInfo.selectedPro = "省区";
+              }
+              noAppointInfo.selectedCity = "市区";
+              noAppointInfo.proviceList = d;
+              noAppointInfo.isShowPro = "true";
+              noAppointInfo.ishasPro = true; //为true时，已有省
+
+              var storeHtml = template($shop_list_tpl, noAppointInfo);
+
+              $("#shop_list_show").html(storeHtml);
+            },
+            "json"
+          );
+        }
+
+        // 一开始进去判断是否有默认的门店
+        var init_store_box = $("#addr_store_box"),
+          init_store_text = init_store_box.find("#addr_new_store").text(),
+          // 获取款式编码
+          addrStylecode = init_store_box.attr("data-stylecode");
+        if (init_store_text != "") {
+          var init_arr = init_store_text.split(" ");
+          var init_pro = init_arr[0],
+            init_city = init_arr[1],
+            // 获取省的编码
+            adr_provice = init_store_box.attr("data-province"),
+            // 获取市的编码
+            adr_city = init_store_box.attr("data-city");
+          isNoAppoint = true;
+          noAppointInfo.city_code = adr_city;
+          getProviceShow();
+          getCity(adr_provice, init_pro);
+          getShop(adr_city, init_city, 1);
+        }
+
+        // 门店页面点击门店跳转
+        $body.delegate(".adr_toggle .J_shop_information", "click", function(
+          event
+        ) {
+          var shopcode = $(this).attr("data-code");
+          var url = location.href;
+          var url_domain = url.split("?")[0];
+          window.location.href =
+            url_domain + "?OrderbyType=0&PageIndex=1&shopcode=" + shopcode;
+        });
+
+        //点击门店获取省市地址
+        $body.delegate(".al_panelAll_show", "click", function(event) {
+          var store_text = $(this)
+            .find("h3")
+            .text();
+          var new_store =
+            noAppointInfo.selectedPro + noAppointInfo.selectedCity + store_text;
+          noAppointInfo.selectedShop = store_text;
+          console.log(noAppointInfo.selectedCity);
+          isNoAppoint = true;
+          $("#addr_new_store").text(new_store);
+          getShop(
+            noAppointInfo.city_code,
+            noAppointInfo.selectedCity,
+            noAppointInfo.page_index
+          );
+        });
+
+        // 20170926 添加 获取省
+        function getProvice() {
+          $.post(
+            url.getProviceInfo,
+            function(d) {
+              DATA.ShopFristName = "请选择门店~";
+              DATA.colorsize = getColorSize();
+              if (!shopAllInfo.ishasPro) {
+                shopAllInfo.selectedPro = "省区";
+              }
+              shopAllInfo.selectedCity = "市区";
+              shopAllInfo.proviceList = d;
+              shopAllInfo.isShowPro = "true";
+              shopAllInfo.ishasPro = true; //为true时，已有省
+              DATA.BeginDate = changeDateFormat(addDay(d.Message, 1)); //设置开始时间
+              DATA.lastDayDate = changeDateFormat(addDay(DATA.BeginDate, 7)); //设置结束时间
+              DATA.shop = template($shop_list_tpl, shopAllInfo);
+
+              html = template($tpl, DATA);
+              appointDialog(html);
+            },
+            "json"
+          );
+        }
+
+        // 20170926 添加 获取市 proCode:省的编号  proName：省的名字  thisLi：当前点击的li
+        function getCity(proCode, proName) {
+          console.log();
+          $.post(
+            url.getProviceInfo,
+            { areatype: 2, areacode: proCode },
+            function(d) {
+              if (isNoAppoint) {
+                cityContentChange(proName, noAppointInfo, d);
+              } else {
+                cityContentChange(proName, shopAllInfo, d);
+              }
+            },
+            "json"
+          );
+        }
+
+        //添加 获取市(实例属性的变化  proName:获取的省的名称 storeList:当前点击需要改变的实例对象 d:获取市的所有返回值)
+        function cityContentChange(proName, storeList, d) {
+          storeList.selectedPro = proName; //动态改变省的标题名字
+          storeList.selectedCity = "市区";
+          storeList.isShowPro = "false";
+          storeList.isShowCity = true;
+          storeList.isShowStore = false; //使门店为false，呈现不能点击效果
+          storeList.cityList = d;
+          DATA.shop = template($shop_list_tpl, storeList);
+
+          var storeListParent = storeList.parent;
+          $(storeListParent).html(DATA.shop);
+          $(storeListParent)
+            .find(".preal_tit_2")
+            .addClass("active group_abled");
+          $(storeListParent)
+            .find(".al_panel2")
+            .show()
+            .siblings()
+            .hide();
+        }
+
+        //获取门店列表
+        function getShop(cityCode, proName, paging) {
+          console.log(addrStylecode);
+          $.post(
+            url.getShopLIst,
+            { shopcode: addrStylecode, areacode: cityCode, pageIndex: paging },
+            function(d) {
+              console.log("post");
+
+              if (isNoAppoint) {
+                console.log("12aa");
+                shopContentChange(proName, noAppointInfo, d);
+              } else {
+                shopContentChange(proName, shopAllInfo, d);
+              }
+            },
+            "json"
+          );
+        }
+
+        //添加 获取市(实例属性的变化  proName:获取的省的名称 storeList:当前点击需要改变的实例对象 d:获取市的所有返回值)
+        function shopContentChange(proName, storeList, d) {
+          storeList.selectedCity = proName; //动态改变市的标题名字
+          storeList.shopList = d;
+          storeList.isShowPro = "false";
+          storeList.isShowStore = true;
+          setPage(); //获取分页列表
+          DATA.shop = template($shop_list_tpl, storeList);
+          html = template($tpl, DATA);
+
+          var storeListParent = storeList.parent;
+          $(storeListParent).html(DATA.shop);
+          $(storeListParent)
+            .find(".preal_tit_2")
+            .addClass("group_abled");
+          $(storeListParent)
+            .find(".preal_tit_3")
+            .addClass("active group_abled");
+          $(storeListParent)
+            .find(".al_panel3")
+            .show()
+            .siblings()
+            .hide();
+        }
+
+        // 门店列表分页效果
+        function setPage() {
+          if (isNoAppoint) {
+            var page =
+              noAppointInfo.shopList.RecordCount /
+              noAppointInfo.shopList.PageSize;
+            noAppointInfo.shopList.pageList = [];
+            for (var i = 0; i < page; i++) {
+              noAppointInfo.shopList.pageList.push({ pageIndex: i + 1 });
+            }
+          } else {
+            var page =
+              shopAllInfo.shopList.RecordCount / shopAllInfo.shopList.PageSize;
+            shopAllInfo.shopList.pageList = [];
+            for (var i = 0; i < page; i++) {
+              shopAllInfo.shopList.pageList.push({ pageIndex: i + 1 });
+            }
+          }
+        }
+
+        //显示效果
+        function showActive(showBox) {
+          showBox.addClass("active");
+          showBox.siblings().removeClass("active");
+        }
+
+        //获取面板的index
+        function getIdIndex(theBox) {
+          var tit_class = theBox.attr("data-class"),
+            index_arr = tit_class.split("_");
+          return index_arr[index_arr.length - 1];
+        }
+
+        function changeDateFormat(time) {
+          return time.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/) == null
+            ? time
+            : time.replace(/-/g, "/");
+        }
+
+        function template(tpl, d) {
+          return easyTemplate(tpl, d).toString();
+        }
+        function getColorSize() {
+          var colorsize = eval("(" + $("#hdColorSize").val() + ")");
+          return colorsize.length > 0 ? colorsize[0] : {};
+        }
+        function addDay(currdate, daynum) {
+          var d = new Date(currdate);
+          if (d == "Invalid Date") {
+            return;
+          }
+          var n = d.getTime() + daynum * 24 * 60 * 60 * 1000;
+          var result = new Date(n);
+          return (
+            result.getFullYear() +
+            "-" +
+            (result.getMonth() + 1) +
+            "-" +
+            result.getDate()
+          );
+        }
+        function appointDialog(html) {
+          var $appoint_dialog = $("#J_appoint_dialog");
+          if ($appoint_dialog.length <= 0) {
+            $('<div id="J_appoint_dialog">' + html + "</div>").dialog({
+              title: "请录入试穿信息",
+              width: 580,
+              modal: true
+            });
+          } else {
+            $appoint_dialog.dialog("open");
+          }
+        }
+        function closeAppointDialog() {
+          var $appoint_dialog = $("#J_appoint_dialog");
+          $appoint_dialog.dialog("close");
+        }
+        function isMobile(val) {
+          return /^1[0-9][0-9]{9,9}$/i.test(val);
+        }
+        function isNull(val) {
+          return val == null || val == "" ? "" : val;
+        }
+        function autoDialog(html) {
+          $auto_dialog.html(html);
+          $auto_dialog.dialog({
+            width: 400,
+            height: 100,
+            title: "消息提示"
+          });
+          T = setInterval(function() {
+            if ($auto_dialog != null) {
+              $auto_dialog.dialog("close");
+              clearInterval(T);
+            }
+          }, 3000);
+        }
+        init();
+      }
+    },
+    $.mola || {}
+  );
+})(jQuery);
+
+$(function() {
+  $.mola.appointment();
+});
+
+//----------------------------test data---------------------------------------------------------
+//var TESTDATA ={"IsSuccess":true,"Message":null,"Data":[{"ShopCode":"002","ShopName":"北京路店","Telephone":"020-83348230","Address":"广州市北京路271号2楼（卓悦旁，百丽2楼）","ProvinceCode":"099019","CityCode":"099019004","DistrictCode":"099019004011","BaiduMapUrl":"http://j.map.baidu.com/qt6jx","Latitude":"23.128374","Longitude":"113.275698"},{"ShopCode":"001","ShopName":"花地店","Telephone":"020-62772487","Address":"广州市荔湾区中南街花地大道渔尾桥南","ProvinceCode":"099019","CityCode":"099019004","DistrictCode":"099019004004","BaiduMapUrl":"http://j.map.baidu.com/qt6jx","Latitude":"23.061547","Longitude":"113.23337"}]};
+
+//----------------------------test data---------------------------------------------------------
+
+/*
+此文件是门店自提的js
+*业务：门店自提是需要检查sku的。
+*
+*页面打开默认选中的warecode查询没有库存的话，就不展示“门店自提：支持自提 查看有库存门店”字样。反之则展示出来
+*
+*触发请求查询sku的事件是鼠标经过 ，所以在页面上有个对象储存没有warecode的门店库存现象，以减少I/O； 
+*/
+
+//门店自提
+;
+(function ($) {
+    var load_img = '<img src="http://i2.mbscss.com/img/shopping/20120619/loading.gif" width="32" height="32"/>';
+    $.mola = $.extend(
+        {
+            getInShop: function () {
+
+                var get_shop_url = "/item/GetShopListByWareCode"; //地址
+                var get_shop_post_data = { warecode: '' }; //传送的值
+                var store_shop_info = {}; //存储已经范围内过的warecode的对象
+                var get_shop_tpl = $('[mola="templatestorelist"]').html(); //门店列表模板
+                var get_shop_content = $('[mola="getInShopContent"]'); //存放门店列表的容器
+                var $trigger = $('[mola="getInShop"]'); //触发请求对象
+
+                if ($trigger.length == 0) {
+                    return;
+                }
+
+                function init() {
+                    getWareCode(); //获取warecode
+                    getShopData(isShowShopArr); //获取数据           
+                }
+
+                function event() {
+
+                    if ($trigger.length == 0) {
+                        return;
+                    }
+
+                    $trigger.bind('mouseenter mouseleave', function (event) {
+                        var warecode = '';
+                        var $ul = get_shop_content.find('.J_shop_list');
+                        var $parent = $(this).find('.J_gis_content');
+
+                        if (event.type == 'mouseenter') {
+                            $parent.show();
+                            $ul.removeClass('fn-none');
+                            getWareCode();
+                            warecode = get_shop_post_data.warecode;
+
+                            if (store_shop_info.hasOwnProperty(warecode)) {//有数据，直接展示
+                                showShopList(store_shop_info[warecode]);
+                            } else {//没数据，请求数据
+                                getShopData(sucessShopData);
+                            }
+
+                        } else if (event.type == 'mouseleave') {
+                            $parent.hide();
+                            $ul.addClass('fn-none');
+                        }
+                    });
+                }
+
+                //获取warecode
+                function getWareCode() {
+                    var color = '';
+
+                    $('[mola="color"]', '.licolork').each(function (i, t) {
+                        var $this = $(t);
+
+                        if ($this.hasClass('seldon')) {
+                            color = $this.attr('color');
+                            return;
+                        }
+                    });
+
+                    $('[mola="size"]').each(function (i, t) {
+                        var $this = $(t);
+                        if ($this.hasClass('selon') && $this.attr('color') == color) {
+                            get_shop_post_data.warecode = $this.attr('warecode').split(',')[0];
+                            return;
+                        }
+                    });
+                }
+
+
+                function getShopData(callback) {
+                    get_shop_content.html(load_img);
+
+                    //------------------------------------------test------------------------------------------------------------------------------------------
+
+                    // var data = TESTDATA;
+
+                    // return;
+
+
+                    //------------------------------------------test------------------------------------------------------------------------------------------
+
+                    $.post(
+                        get_shop_url,
+                        get_shop_post_data,
+                        function (d) {
+                            var data = $.parseJSON(d);
+
+                            if (callback && typeof callback === 'function') {
+                                callback(data);
+                            }
+                        }
+                    );
+                }
+
+                //每次展示数据
+                function sucessShopData(data) {
+                    if (data.IsSuccess) {//返回成功
+                        var html = '';
+                        data.O2OShopInfo = data.Data;
+                        data.IsGetInShop = 1; //用于区分是查看库存还是，预约试衣
+                        html = easyTemplate(get_shop_tpl, data).toString(); //生成模板
+                        store_shop_info[get_shop_post_data.warecode] = html; //存储改warecode的模板
+                        showShopList(html); //插入模板
+                    } else {//出错
+                        showShopList('亲~该款旗下门店没有存库哈~');
+                    }
+                }
+
+                //初始化请求数据
+                function isShowShopArr(data) {
+
+                    if (data.IsSuccess && !(data.Data == "" || data.Data == null)) {
+
+                        var html = '';
+                        data.O2OShopInfo = data.Data;
+                        html = easyTemplate(get_shop_tpl, data).toString();
+                        store_shop_info[get_shop_post_data.warecode] = html;
+                        showShopList(html);
+                        $trigger.show();
+                        event();        //绑定事件
+
+                    } else {//出错
+                        $trigger.hide(); //初始化没有库存就不展示可以自提的门店
+                    }
+                }
+
+
+                function showShopList(html) {
+                    get_shop_content.html(html);
+                }
+
+                init(); //触发
+            }
+
+        }, $.mola || {});
+
+})(jQuery);
+
+$(function () {
+    $.mola.getInShop();
+});
+
