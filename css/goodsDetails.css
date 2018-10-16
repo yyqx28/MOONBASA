@@ -20,14 +20,13 @@ ul{
 }
 /*}顶部个人中心栏*/
 .top .top_person{
-	/*width:1263px;*/
 	height:30px;
 	background: #f5f5f5;
 	border:1px solid #e5e5e5;
-	overflow:hidden;
 	font-size:12px; 
 	color:#999999;
 	line-height: 30px;
+	position: relative;
 }
 .top_person a{
 	font-size:12px; 
@@ -48,7 +47,7 @@ ul{
 	color:#c20055;
 }
 .top_person .person_right{
-	padding-right: 30px;
+	padding-right: 50px;
 	float: right;
 	position: relative;
 }
@@ -57,6 +56,36 @@ ul{
 }
 .person_right .line{
 	margin:0 10px;
+}
+/*划过微信显示二维码*/
+.top_person .huawei{
+	position: absolute;
+	top: 28px;
+    left: 80px;
+    display: none;
+}
+.person_right:hover .hua_w:hover .huawei{
+	display: block;
+}
+/*划过微博显示二维码*/
+.top_person .huaweo{
+	position: absolute;
+	top: 28px;
+    left: 205px;
+    display: none;
+}
+.person_right:hover .hua_o:hover .huaweo{
+	display: block;
+}
+/*划过手机版显示二维码*/
+.top_person .huashou{
+	position: absolute;
+	top: 21px;
+    left: 277px;
+    display: none;
+}
+.person_right:hover .hua_s:hover .huashou{
+	display: block;
 }
 
 /*顶部搜索栏*/
@@ -86,7 +115,7 @@ ul{
 }
 .top_search .search_right{
 	float: left;
-	margin-left: 183px;
+	margin-left: 160px;
 }
 .search_right .right_sele{
 	width:530px;
@@ -126,6 +155,7 @@ ul{
 	height:130px;
 	padding-left: 490px;
 }
+
 /*中部区域*/
 /*导航栏*/
 .center .center_nav {
@@ -164,6 +194,31 @@ ul{
 	top:16px;
 	left:980px;
 }
+/*划过 周二上新 显示的列表*/
+.center_nav .feb{
+	position: absolute;
+	top: 55px;
+    left: 118px;
+	width:120px;
+	height:240px;
+	background: #fff;
+	border:1px solid #ccc;
+	z-index: 2;
+	padding-top:10px;
+	display: none;
+}
+.center_nav .feb p{
+	width:120px;
+	font-size: 14px;
+	color:#7e7d7d;
+	line-height: 25px;
+}
+.center_nav .feb p:hover{
+	background: #676363;
+}
+.center_nav:hover .huafeb:hover .feb{
+	display: block;
+}
 /*商品详细信息 */
 .center .center_goods{
 	height:720px;
@@ -180,6 +235,7 @@ ul{
 	font-size:12px; 
 	color:#9a9a9a;
 }
+/*左边放大镜*/
 .center_goods .goods_pho{
 	width:385px;
 	height: 666px;
@@ -265,7 +321,7 @@ li:nth-child(6){
 .pho_code img{
 	vertical-align: middle;
 }
-
+/*中间部分*/
 .center_goods .goods_rate{
 	width:600px;
 	height: 635px;
@@ -301,7 +357,7 @@ li:nth-child(6){
 	color: #e50065;
 	padding-left:16px;
 }
-.fast_left span{
+.fast_left #dollor span{
 	font-size: 40px;
 	color:#e50065;
 }

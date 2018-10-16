@@ -347,6 +347,7 @@ ul{
 	height:33px;
 	background: #e60065;
 	cursor: pointer;
+	border:0;
 }
 /*搜索后预结果*/
 .spanser #result{

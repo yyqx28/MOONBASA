@@ -1,0 +1,208 @@
+*{
+	margin: 0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+}
+/*顶部区域*/
+.top{
+	height:135px;
+}
+/*个人中心*/
+.top .top_person{
+	height: 26px;
+	padding-left: 260px;
+	padding-right: 33px;
+	position: relative;
+	border-bottom: 1px solid #f4f4f4;
+}
+.top .top_person a{
+	font-size: 12px;
+	color: #747474;
+	line-height: 26px;
+}
+.top .top_person img{
+	vertical-align: middle;
+}
+.top_person .person_left{
+	float: left;
+}
+.top_person .person_right{
+	float: right;
+}
+.person_right .line{
+	margin: 0 5px;
+}
+.top_person .Slogo{
+	position: absolute;
+	top:0;
+	left:55px;
+}
+
+/*购物流程*/
+.top .flow{
+	height: 105px;
+	padding-left: 610px;
+	padding-top: 30px;
+}
+.flow .flow_list{
+	height: 24px;
+	width:618px;
+	border:1px solid #e50065;
+}
+.flow_list .step{
+	width:200px;
+	height:24px;
+	float: left;
+	font-size: 12px;
+	color: #8e8e8e;
+	line-height: 24px;
+	text-align: center;
+}
+.flow_list .step:first-child{
+	background: #e40064;
+	color: #fff;
+}
+.flow_list .step img{
+	vertical-align: middle;
+	margin-left:70px;
+}
+/*中部区域*/
+.center .cen_top{
+	width:1200px;
+	margin-left: 30px;
+	border:1px solid #ebebeb;
+}
+.cen_top .cen_tit{
+	height: 36px;
+	width:1200px;
+	background: #ebebeb;
+}
+.cen_tit span{
+	font-size: 14px;
+	color: #414141;
+	line-height: 36px;
+	float: left;
+}
+.cen_tit span input{
+	vertical-align: middle;
+	margin-right: 15px;
+}
+.cen_tit .all{
+	margin-left: 90px;
+}
+.cen_tit .goods{
+	margin-left: 230px;
+}
+.cen_tit .price{
+	margin-left: 270px;
+}
+.cen_tit .sum{
+	margin-left: 90px;
+}
+.cen_tit .amount{
+	margin-left: 100px;
+}
+.cen_tit .handle{
+	margin-left: 100px;
+}
+.cen_top .cen_lis{
+	width:1120px;
+	margin-left: 40px;
+}
+.cen_lis p{
+	width:1070px;
+	height:30px;
+	font-size: 12px;
+	color:#333333;
+	line-height:30px;
+	background: #f5f5f5;
+	padding-left:50px;
+}
+.cen_lis .lis_good{
+	height:66px;
+	width:1120px;
+	border-bottom: 1px solid #ebebeb; 
+}
+.lis_good .good_left{
+	width:80px;
+	height: 66px;
+	background:pink;
+	float: left;
+	padding-left: 50px;
+}
+.good_left input{
+	float: left;
+	margin-top: 26px;
+	border:1px solid #8e8f8f;
+}
+.lis_good .good_center{
+	width:490px;
+	height: 56px;
+	background:red;
+	float: left;
+	padding-top: 10px;
+}
+.good_center span:first-child{
+	display: inline-block;
+	width:490px;
+	font-size: 12px;
+	color: #5b5b5b;
+}
+.good_center span{
+	color: #9d9d9d;
+	font-size: 12px;
+}
+.lis_good .good_right{
+	width:500px;
+	height: 66px;
+	background:green;
+	float: left;
+}
+.lis_good .good_right span{
+	display: inline-block;
+}
+.good_right .cost{
+	font-size:10px; 
+	color:#000;
+}
+.good_right .jiajian{
+	width:70px;
+	height:26px;
+	border:1px solid #f5f5f5;
+	text-align: center;
+}
+.jiajian .jian{
+	width:18px;
+	height: 24px;
+	border-right:1px solid #f5f5f5;
+	float: left; 
+}
+.jiajian .sums{
+	width:30px;
+	height: 24px;
+	border-right:1px solid #f5f5f5; 
+	float: left;
+}
+.jiajian .jia{
+	width:18px;
+	height: 24px;
+	float: left;
+}
+.good_right .cost_he{
+	font-size: 10px;
+	color: #d90077;
+}
+.good_right .change{
+	width:30px;
+	height:40px; 
+}
+.change .bian{
+	width:30px;
+	height: 20px;
+}
+.change .del{
+	width:30px;
+	height: 20px;
+}

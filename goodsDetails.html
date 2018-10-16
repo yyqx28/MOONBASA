@@ -4,11 +4,18 @@
 	<meta charset="UTF-8">
 	<title>商品详情</title>
 	<link rel="stylesheet" href="css/goodsDetails.css">
+	<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+	<link rel="stylesheet" href="css/fixed.css">
+	<link rel="stylesheet" href="css/publicBottom.css">
 </head>
 <body>
+	<div class="fixBox">
+		<!-- 定位区域 -->
+	</div>
 	<!-- 顶部区域 -->
 	<div class="top">
 		<div class="top_person">
+			
 			<div class="person_left">
 				<a href="index.html"><img src="img/home.png" alt=""/>梦芭莎首页</a>
 				<span><img src="img/zheng.png" alt=""/>100%正品保证&nbsp;&nbsp; &nbsp; &nbsp;  创立于2006年</span>
@@ -18,15 +25,19 @@
 				<span class="mymoon"><img src="img/d_jiao.png" alt=""/></span>
 				<img src="img/line.jpg" alt="" c class="line"/>
 				<a href="">退出登录</a>
+				<img src="img/line.jpg" alt="" class="line"/>
+				<a href="" class="hua_w"><img src="img/d_weixin.png" alt=""/>微信
+					<img src="img/160919171653.jpg" alt="" class="huawei" />
+				</a>
 				<img src="img/line.jpg" alt="" c class="line"/>
-
-				<a href=""><img src="img/d_weixin.png" alt=""/>微信</a>
+				<a href="" class="hua_o"><img src="img/d_weibo.png" alt="" class="g_weibo" />微博
+					<img src="img/weibo.png" alt="" class="huaweo" />
+				</a>
 				<img src="img/line.jpg" alt="" c class="line"/>
-
 				
-				<a href=""><img src="img/d_weibo.png" alt="" class="g_weibo" />微博</a><img src="img/line.jpg" alt="" c class="line"/>
-				
-				<a href=""><img src="img/d_phone.png" alt=""/>手机版</a><img src="img/line.jpg" alt="" c class="line"/>
+				<a href="" class="hua_s"><img src="img/d_phone.png" alt=""/>手机版
+					<img src="img/download.gif" alt="" class="huashou" />
+				</a><img src="img/line.jpg" alt="" c class="line"/>
 				<a href="">收藏梦芭莎</a><img src="img/line.jpg" alt="" c class="line"/>
 				<a href=""><img src="img/d_shop.png" alt=""/>购物车</a><img src="img/line.jpg" alt="" c class="line"/>
 				<a href=""><img src="img/d_fenlei.png" alt=""/>全部分类</a>
@@ -57,7 +68,18 @@
 		<!-- 导航栏 -->
 		<div class="center_nav">
 			<a href="">首页</a>
-			<a href="">周二上新</a>
+			<a href="" class="huafeb">周二上新
+				<div class="feb">
+					<p>优雅 冬2新品</p>
+					<p>优雅 冬2新品</p>
+					<p>优雅 冬2新品</p>
+					<p>优雅 冬2新品</p>
+					<p>优雅 冬2新品</p>
+					<p>优雅 冬2新品</p>
+					<p>优雅 冬2新品</p>
+					<p>优雅 冬2新品</p>
+				</div>
+			</a>
 			<img src="img/d_new.png" alt="" class="new" />
 			<a href="">全部商品</a>
 			<a href="">连衣裙</a>
@@ -83,7 +105,7 @@
 				</div>
 				<div class="pho_bottom">
 					<div class="pho_bot_left">
-						<a href=""><img src="img/d_left.png" alt=""/></a>
+						<img src="img/d_left.png" alt=""/>
 					</div>
 					<div class="pho_bot_cen">
 						<ul class="imgs">
@@ -96,7 +118,7 @@
 						</ul>
 					</div>
 					<div class="pho_bot_right">
-						<a href=""><img src="img/d_right.png" alt=""/></a>
+						<img src="img/d_right.png" alt=""/>
 					</div>
 				</div>
 				<div class="pho_code">
@@ -109,7 +131,7 @@
 				<div class="rate_cost">
 					<div class="cost_fast">
 						<div class="fast_left">
-							<p>￥<span>199</span></p>
+							<p id="dollor">￥<span>199</span></p>
 						</div>
 						<div class="fast_right">
 							<img src="img/move01.gif" alt=""/>
@@ -121,10 +143,6 @@
 						<img src="img/d_ziline.png" alt=""/>
 						<span class="ziyin">梦芭莎自营</span>
 					</p>
-					<!-- <div class="right_code">
-						<a href=""><img src="img/d_cha.png" alt=""/></a>
-						<img src="img/d_code.png" alt=""/>
-					</div> -->
 				</div>
 				<div class="clo_color">
 					<span class="col">颜色</span> 
@@ -228,10 +246,10 @@
 			</div>
 			<div class="det_center">
 				<div class="cen_nav">
-					<a href="" class="first navv">商品详情</a>
+					<a href="javascript:;" class="first navv">商品详情</a>
 					<a href="javascript:0;" class="navv">评价(71)</a>
-					<a href="" class="navv">如何支付</a>
-					<a href="" class="navv">7天无条件退换货</a>
+					<a href="javascript:;" class="navv">如何支付</a>
+					<a href="javascript:;" class="navv">7天无条件退换货</a>
 				</div>
 				<img src="img/d_radio.png" alt="" class="radio" />
 				<img src="img/M8_2_163242_06.jpg" alt="" class="sizes" />
@@ -241,9 +259,19 @@
 			</div> -->
 		</div>
 	</div>
+	<div class="bottomBox">
+		<!--底部区域 -->
+	</div>
 </body>
 </html>
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/Slider.js"></script>
 <script type="text/javascript" src="js/goodsDetails.js"></script>
 <script type="text/javascript" src="js/BigMirror.js"></script>
+<script type="text/javascript" src="js/fixed.js"></script>
+<script>
+	$(function(){
+		$(".fixBox").load("fixed.html");
+		$(".bottomBox").load("publicBottom.html");
+	});
+</script>

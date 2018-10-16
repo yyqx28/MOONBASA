@@ -1,0 +1,221 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	width:100%;
+	height:100%;
+}
+a{
+	text-decoration: none;
+	cursor: pointer;
+}
+input{
+	outline: none;
+}
+ul{
+	list-style: none;
+}
+/*定位区域*/
+.side{
+	width:35px;
+	height:530px;
+	background: #000;
+	position: fixed;
+	top:0;
+	left:1230px;
+	z-index: 3;
+	padding-top: 160px;
+}
+#ren,#xin,#weixin,#erji,#backTop{
+	width:35px;
+	height:30px;
+	margin-top: 10px;
+	padding-top: 10px;
+}
+#erji{
+	background: #262626;
+}
+.side i{
+	color:#fff;
+	font-size: 25px;
+	line-height: 30px;
+	text-align: center;
+	margin-left:5px;
+	cursor: pointer;
+}
+#backTop{
+	margin-top:105px;
+}
+.side .sum{
+	width:35px;
+	padding-top: 10px;
+	padding-bottom:10px;
+	margin:15px 0;
+	border-top:2px solid #3e3e3e;
+	border-bottom:2px solid #3e3e3e;
+}
+.sum p{
+	font-size: 14px;
+	color:#fff;
+	text-align: center;
+
+}
+.sum .count{
+	width:18px;
+	height:18px;
+	background: #e50065;
+	border-radius: 50%;
+	font-size: 10px;
+	color: #fff;
+	text-align: center;
+	margin-left:8px;
+	margin-top:5px;
+}
+/*划过小人显示的登录注册*/
+.reg{
+	width:276px;
+	height:218px;
+	background: #fff;
+	position: absolute;
+	top: 170px;
+    left: -274px;
+    display: none;
+}
+.reg .reg_triangle{
+	width:0;
+	height:0;
+	border:6px solid transparent;
+	border-left-color:#fff;
+	position: absolute;
+	top: 15px;
+    left: 276px;
+}
+.reg .cha{
+	height:20px;
+	padding-right:15px;
+	padding-top:15px;
+}
+.cha img{
+	float: right;
+}
+.reg .regImg {
+	margin-left:105px;
+	margin-bottom: 10px;
+} 
+.reg h4{
+	font-weight: 100px;
+	font-size:12px; 
+	color:#979797;
+	text-align: center;
+}
+.reg .regBtn{
+	width:195px;
+	height:27px;
+	margin:0 auto;
+	overflow: hidden;
+	margin-top: 10px;
+}
+.regBtn span{
+	display: inline-block;
+	width:85px;
+	height:25px;
+	border:1px solid #c10055;
+	font-size:12px;
+	line-height: 25px;
+	text-align: center;
+	float: left;
+	cursor: pointer;
+}
+.denglu{
+	color:#fff;
+	background: #c10055;
+	margin-right:20px;
+}
+.zuce{
+	color:#c10055;
+}
+.reg .regBot{
+	overflow:hidden;
+	margin-top:12px;
+}
+.regBot span{
+	display: inline-block;
+	float: left;
+	width:136px;
+	height:32px;
+	background: #f4f4f4;
+	border:1px solid #e5e5e5;
+	font-size:12px;
+	line-height: 32px;
+	text-align: center;
+	cursor: pointer; 
+}
+/*划过购物车*/
+.shopping{
+	width:268px;
+	height:678px;
+	background: #eeeeee;
+	position: absolute;
+	top:0;
+	left:-280px;
+	padding-top:12px;
+	padding-left:12px;
+	border-top:1px solid #b6b4b6;
+	display: none;
+}
+.shopping h3 {
+	font-size:12px;
+	color:#555555;
+}
+.shopping p{
+	font-size:12px;
+	color:#555555;
+	margin-top:200px;
+	text-align: center;
+}
+.shopping .shop_triangle{
+	width:0;
+	height:0;
+	border:6px solid transparent;
+	border-left-color:#eeeeee;
+	position: absolute;
+	top: 270px;
+    left: 280px;
+}
+/*划过微信*/
+.wenxinCode{
+	width:140px;
+	height:350px;
+	position:absolute;
+	top:200px;
+	left:-140px;
+	display: none;
+}
+.wenxinCode .wei_triangle{
+	width:0;
+	height:0;
+	border:6px solid transparent;
+	border-left-color:#fb2124;
+	position: absolute;
+	top: 220px;
+    left: 140px;
+}
+/*划过返回顶部 */
+.back{
+	font-size: 12px;
+	color:#4e4a4a;
+	position: absolute;
+	top:600px;
+	left:-60px;
+	display: none;
+}
+.back .back_triangle{
+	width:0;
+	height:0;
+	border:6px solid transparent;
+	border-left-color:#fff;
+	position: absolute;
+	top: 2px;
+    left: 75px;
+}
