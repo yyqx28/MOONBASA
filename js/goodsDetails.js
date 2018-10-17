@@ -53,6 +53,21 @@ $.each(
 		});
 	}
 ); 
+// 放大镜效果
+$(".pho_top").mouseenter(function(){
+				singlton.getInstance({
+					//要放大的图片对应的dom元素
+					bigBoxDom:this,
+					//大图的src；要放大的效果的dom元素的背景图片
+					bigImg:"img/d_yuan1.jpg",			
+					//要放大图片的宽和高
+					bigBoxWidth:385,
+					bigBoxHeight:520,
+					//放大镜的宽和高
+					width:100,
+					height:130
+				});
+			});
 //选择尺码
 $(".sml").click(function(){
 	$(this).css({border:"1px solid #e50065"})
