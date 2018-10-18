@@ -29,19 +29,21 @@ $.each(
 			$(this).css({border:'1px solid #000'})
 			.siblings().css({border:'0'});
 
-			var url = $(this).css("backgroundImage").
-			replace('url(','').replace(')','');	
-			console.log(url);	
-			// $(".pho_top").attr("backgroundImage","url("+url+")");
-			$(".pho_top").css({"backgroundImage":"url("+url+")"});
-			console.log($(".pho_top").attr("backgroundImage"));
+			// var url = $(this).css("backgroundImage").
+			// replace('url(','').replace(')','');	
+			// console.log(url);	
+			// // $(".pho_top").attr("backgroundImage","url("+url+")");
+			// $(".pho_top").css({"backgroundImage":"url("+url+")"});
+			// console.log($(".pho_top").attr("backgroundImage"));
+			var srcs = $(this).attr("src");
+			$(".pho_top").attr("src",srcs);
 			// 放大镜效果
 			$(".pho_top").mouseenter(function(){
 				singlton.getInstance({
 					//要放大的图片对应的dom元素
 					bigBoxDom:this,
 					//大图的src；要放大的效果的dom元素的背景图片
-					bigImg:url,			
+					bigImg:srcs,			
 					//要放大图片的宽和高
 					bigBoxWidth:385,
 					bigBoxHeight:520,
@@ -98,3 +100,20 @@ $.each(
 		});
 	}
 );
+
+
+$.ajax({
+	type:"get",
+	url:"getGoodsInfo.php",
+	async:true,
+	data:{
+		"goodId":goodsid
+	},
+	success:function(data){
+		$("#goodsname").html(data.goodsname);
+		$("#goodsprice").html(data.goodsprice);
+		$("#goodscount").html(data.goodscount);
+		$("#goodsimg").attr("src",data.goodsImg);
+	},
+	dataType:"json"
+});

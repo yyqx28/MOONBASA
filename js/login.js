@@ -167,6 +167,7 @@ $("#sub").onclick = function(){
 				let str = xhr.responseText;
 				if(str=="1"){
 					location.href="register.html";
+					// alert("注册成功！");
 				}else if(str=="-1"){
 					alert("注册失败！");
 				}else{

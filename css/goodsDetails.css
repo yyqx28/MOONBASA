@@ -244,8 +244,12 @@ ul{
 .goods_pho .pho_top{
 	width:385px;
 	height:520px;
-	background-image:url(../img/d_yuan1.jpg);
-	background-size:385px 520px;
+	/*background-image:url(../img/d_yuan1.jpg);
+	background-size:385px 520px;*/
+}
+.goods_pho .pho_top img{
+	width:385px;
+	height:520px;
 }
 .goods_pho .pho_bottom{
 	width:385px;
