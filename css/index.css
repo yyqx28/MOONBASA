@@ -53,6 +53,9 @@
 	width:60px;
 	float: left;
 }
+.listBox_left .newscloth span{
+	display: none;
+}
 .listBox_right{
 	padding-left:6px;
 	float: right;

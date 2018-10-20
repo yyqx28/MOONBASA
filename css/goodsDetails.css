@@ -18,7 +18,7 @@ ul{
 .top{
 	height: 236px;
 }
-/*}顶部个人中心栏*/
+/*顶部个人中心栏*/
 .top .top_person{
 	height:30px;
 	background: #f5f5f5;
@@ -244,8 +244,6 @@ ul{
 .goods_pho .pho_top{
 	width:385px;
 	height:520px;
-	/*background-image:url(../img/d_yuan1.jpg);
-	background-size:385px 520px;*/
 }
 .goods_pho .pho_top img{
 	width:385px;
@@ -280,29 +278,9 @@ ul{
 	float: left;
 	margin-right:10px;
 }
-li:nth-child(1){
-	background-image: url(../img/d_yuan1.jpg);
-	background-size: 50px 68px;
-}
-li:nth-child(2){
-	background-image: url(../img/d_yuan2.jpg);
-	background-size: 50px 68px;
-}
-li:nth-child(3){
-	background-image: url(../img/d_yuan3.jpg);
-	background-size: 50px 68px;
-}
-li:nth-child(4){
-	background-image: url(../img/d_yuan4.jpg);
-	background-size: 50px 68px;
-}
-li:nth-child(5){
-	background-image: url(../img/d_yuan5.jpg);
-	background-size: 50px 68px;
-}
-li:nth-child(6){
-	background-image: url(../img/d_yuan6.jpg);
-	background-size: 50px 68px;
+.pho_bot_cen .imgs li img{
+	width:50px;
+	height: 68px;
 }
 .pho_bottom .pho_bot_right{
 	width:45px;

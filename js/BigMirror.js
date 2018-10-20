@@ -45,7 +45,7 @@ let singlton = (function(){
 			
 			//2、放大效果的dom
 			this.showDom = document.createElement("div");
-			this.showDom.style.cssText = "position: absolute;z-index:2";
+			this.showDom.style.cssText = "position: absolute;z-index:2;top:0;";
 		}
 		updateUI(){
 			this.mirrorDom.style.width = this.width+"px";

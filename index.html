@@ -34,7 +34,7 @@
 				<div class="list">
 					<h3>女装</h3>
 					<div class="listBox_left">
-						<p><a href="">当季新品</a></p>
+						<p><a href="javascript:;" class="newscloth">当季新品<span>当季新品</span></a></p>
 						<p><a href="">T恤</a></p>
 						<p><a href="">外套</a></p>
 						
@@ -291,6 +291,7 @@
 <script type="text/javascript" src="js/Slider.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/publicTop.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
 <script>
 	$(function(){
 		let lun = new Slider(
@@ -301,6 +302,13 @@
 
 	$(".topBox").load("publicTop.html");
 	$(".bottomBox").load("publicBottom.html");
+	$(".newscloth").click(function(){
+		var ids = $(this).find("span").html();
+		setCookie("clothstyle",ids,1);
+		console.log(document.cookie);
+		location.href="goodsList.html";
+	});
+	
 </script>
 
 	

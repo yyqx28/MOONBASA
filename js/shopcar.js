@@ -149,4 +149,9 @@
 			}
 		});
 	});
-
+	// 删除商品
+	$(".del").click(function(){
+		if(confirm("您确定删除此商品吗？")){
+			$(this).parent().parent().parent().remove();
+		}
+	});

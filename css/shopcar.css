@@ -218,11 +218,13 @@ a{
 	width:50px;
 	height: 20px;
 	color: #000;
+	cursor: pointer;
 }
 .change .del{
 	width:50px;
 	height: 20px;
 	color: #a6a6a6;
+	cursor: pointer;
 	cursor: pointer;
 }
 

@@ -376,6 +376,7 @@ ul{
 	padding-top: 8px;
 
 }
+/*动态创建商品信息*/
 .pngs .pngs_list{
 	width:230px;
 	height:462px;
@@ -384,9 +385,33 @@ ul{
 	float: left;
 	margin-bottom: 8px;
 	margin-right: 6px;
+	cursor: pointer;
+}
+.pngs_list .imgId{
+	display: none;
+}
+.pngs .pngs_list .tu{
+	width:230px;
+	height:318px;
+	float: left;
 }
 .pngs_list .list_cen{
 	padding-left: 10px;
+}
+.pngs_list .list_cen .xiatu{
+	width:220px;
+	height: 54px;
+	overflow: hidden;
+}
+.list_cen .xiatu img{
+	width:34px;
+	height: 45px;
+	margin-top: 5px;
+	float: left;
+	margin-right: 5px;
+}
+.list_cen .xiatu img:last-child{
+	margin-right: 0;
 }
 .pngs_list .list_cen .nowjia{
 	font-size: 12px;
@@ -400,7 +425,11 @@ ul{
 }
 .list_cen .jieshao{
 	font-size: 14px;
-	color: #333333;l
+	color: #333333;
+	width: 208px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .list_cen .dian{
 	font-size: 14px;

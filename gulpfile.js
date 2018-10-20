@@ -37,6 +37,11 @@ gulp.task("sass",function(){
 	.pipe(sass())
 	.pipe(gulp.dest("D:\\phpStudy\\WWW\\item\\css"));
 });
+
+// build全部
+gulp.task("build",["copyHtml","copyImg","copyJs","copyCss","copyFont","copyPhp"],function(){
+	console.log("OK");
+});
 // 监听
 gulp.task("watchall",function(){
 	gulp.watch("*.html",["copyHtml"]);
