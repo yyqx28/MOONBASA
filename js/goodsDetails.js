@@ -33,7 +33,7 @@ $.each(
 			// $(".pho_top").css({"backgroundImage":"url("+url+")"});
 			// console.log($(".pho_top").attr("backgroundImage"));
 			var srcs = $(this).find(".jpgs").attr("src");
-			console.log(srcs);
+			// console.log(srcs);
 			$(".pho_top img").attr("src",srcs);
 			// 放大镜效果
 			$(".pho_top").mouseenter(function(){
@@ -41,7 +41,7 @@ $.each(
 					//要放大的图片对应的dom元素
 					bigBoxDom:this,
 					//大图的src；要放大的效果的dom元素的背景图片
-					bigImg:"url("+srcs+")",			
+					bigImg:srcs,			
 					//要放大图片的宽和高
 					bigBoxWidth:385,
 					bigBoxHeight:520,
@@ -100,24 +100,51 @@ $.each(
 );
 
 
-
 // 获取cookie
-getCookie("ids");
-console.log(getCookie("ids"));
-// console.log(document.cookie);
-发送ajax
+getCookie("clothesId");
+// console.log(getCookie("clothesId"));
+
+// 发送ajax
 $.ajax({
 	type:"get",
-	url:"getGoodsInfo.php",
+	url:"php/getGoodsInfo.php",
 	async:true,
 	data:{
-		"goodId":goodsid
+		goodsId:data.goodsId
 	},
 	success:function(data){
-		$("#goodsname").html(data.goodsname);
-		$("#goodsprice").html(data.goodsprice);
-		$("#goodscount").html(data.goodscount);
-		$("#goodsimg").attr("src",data.goodsImg);
+		// console.log(data.goodsId);
+		// if(data.goodsId == getCookie("clothesId")){
+			// 店名
+			$("$dianming").html(data.beiyong11);
+			console.log($("$dianming").html(data.beiyong11));
+			// 描述
+			$("#descript").html(data.goodsDesc);
+			// 大图
+			$(".pho_top img").attr("src",data.goodsImg);
+			// 小图
+			$(".jpgs1").attr("src",data.beiyong1);
+			$(".jpgs2").attr("src",data.beiyong2);
+			$(".jpgs3").attr("src",data.beiyong3);
+			$(".jpgs4").attr("src",data.beiyong4);
+			$(".jpgs5").attr("src",data.beiyong5);
+			$(".jpgs6").attr("src",data.beiyong6);
+			// 商品编号
+			$("#bianhao").html(data.goodsId);
+			// 商品名称
+			$("#goodsname").html(data.goodsname);
+			// 商品当前价格
+			$("#goodsprice").html(data.goodsprice);
+			// 评论数量
+			$("#discuss").html(data.beiyong12);
+			// 尺码
+			$("#sizeS").html(data.beiyong7);
+			$("#sizeM").html(data.beiyong8);
+			$("#sizeL").html(data.beiyong9);
+			// 剩余数量
+			$("#goodscount").html(data.goodscount);
+			$("#goodsimg").attr("src",data.goodsImg);
+		// }
 	},
 	dataType:"json"
 });

@@ -303,8 +303,8 @@
 	$(".topBox").load("publicTop.html");
 	$(".bottomBox").load("publicBottom.html");
 	$(".newscloth").click(function(){
-		var ids = $(this).find("span").html();
-		setCookie("clothstyle",ids,1);
+		var styles = $(this).find("span").html();
+		setCookie("clothstyle",styles,1);
 		console.log(document.cookie);
 		location.href="goodsList.html";
 	});

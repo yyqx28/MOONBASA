@@ -41,7 +41,7 @@
 	// 	});
 	// });
 // 加减所选商品数量
-	// 加
+	// 减
 	$(".jian").click(function(){
 		var t = $(this).parent().find(".sums");
 		if(t.html()<=1){
@@ -63,7 +63,7 @@
 			return;
 		}
 	});
-	// 减
+	// 加
 	$(".jia").click(function(){
 		var t = $(this).parent().find(".sums");
 		t.html(parseInt(t.html()) + 1);

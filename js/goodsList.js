@@ -37,12 +37,24 @@ $.ajax({
 					</div>";
 				$(".pngs").html(glist);
 			}
-			
 		}
+	
+		// 设置cookie
+		console.log($(".center .pngs .pngs_list"));
+		$(".pngs .pngs_list").each(function(){
+			$(this).click(function(){
+				console.log($(this));
+				var ids = $(this).find(".imgId").html();
+				// 清空cookie
+				setCookie("clothesId",ids,-1);
+				setCookie("clothesId",ids,1);
+				location.href="goodsDetails.html";
+			});
+		});
+
 	},
 	dataType:"json"
 });
-
 
 
 
