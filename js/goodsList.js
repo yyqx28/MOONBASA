@@ -12,6 +12,7 @@ $.ajax({
 	async:true,
 	data:null,
 	success:function(data){
+		console.log(data);
 		var glist = '';
 		for(var i=0;i<data.length;i++){
 			if(data[i].goodsType.indexOf(getCookie("clothstyle")) != -1){
@@ -47,6 +48,7 @@ $.ajax({
 				var ids = $(this).find(".imgId").html();
 				// 清空cookie
 				setCookie("clothesId",ids,-1);
+				// 设置cookie
 				setCookie("clothesId",ids,1);
 				location.href="goodsDetails.html";
 			});

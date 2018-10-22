@@ -1,3 +1,78 @@
+
+// 获取cookie
+var  goodsid = getCookie("clothesId");//商品编号
+var  vipname = getCookie("username");//用户名
+console.log(vipname);
+// 发送ajax
+$.ajax({
+	type:"get",
+	url:"php/getGoodsInfo.php",
+	async:true,
+	data:{
+		"goodsId":goodsid
+	},
+	success:function(data){
+		// 店名
+		$("#dianming").html(data.beiyong11);
+		// 描述
+		$("#descript").html(data.goodsDesc);
+		// 大图
+		$(".pho_top #goodsimg").attr("src",data.goodsImg);
+		// 小图
+		$(".jpgs1").attr("src",data.beiyong1);
+		$(".jpgs2").attr("src",data.beiyong2);
+		$(".jpgs3").attr("src",data.beiyong3);
+		$(".jpgs4").attr("src",data.beiyong4);
+		$(".jpgs5").attr("src",data.beiyong5);
+		$(".jpgs6").attr("src",data.beiyong6);
+		// 商品编号
+		$("#bianhao").html(data.goodsId);
+		// 商品名称
+		$("#goodsname").html(data.goodsName);
+		// console.log(data.goodsName);
+		// 商品当前价格
+		$("#goodsprice").html(data.goodsPrice);
+		// 评论数量
+		$(".discuss").html(data.beiyong12);
+		$(".discuss2").html(data.beiyong12);
+		
+		// 尺码
+		$(".sizeS").html(data.beiyong7);
+		$(".sizeM").html(data.beiyong8);
+		$(".sizeL").html(data.beiyong9);
+		// 剩余数量
+		$("#oddcount").html(data.beiyong13);
+
+		// 点击加入购物车
+		$(".buy_add").click(function(){
+			// 商品数量
+			var goodscount = $(".sums_left").html();
+			// 给购物车添加数据
+			$.ajax({
+				type:"get",
+				url:"php/addShoppingCart.php",
+				Async:true,
+				data:{
+					"vipName":vipname,
+					"goodsId":goodsid,
+					"goodsCount":goodscount
+				},
+				success:function(num){
+					if (num==1) {
+					location.href="shopcar.html";
+					}else{
+						alert("添加失败");
+					}
+				},
+				dataType:"json",
+				scriptCharset:"utf-8"
+			});
+		});
+	},
+	dataType:"json"
+});
+
+
 // 服装小图左右点击
 var left = 0;
 $(".pho_bot_left").click(function(){
@@ -17,7 +92,7 @@ $(".pho_bot_right").click(function(){
 	}else{
 		left = left-60;
 		$(".imgs").css({"left":left});
-		// $(".imgs").position().left = left;不能赋值
+		// $(".imgs").position().left = left;(不能赋值)
 	}
 });
 // 点击小图片切换大图
@@ -59,7 +134,7 @@ $(".pho_top").mouseenter(function(){
 					//要放大的图片对应的dom元素
 					bigBoxDom:this,
 					//大图的src；要放大的效果的dom元素的背景图片
-					bigImg:"img/d_yuan1.jpg",			
+					bigImg:$(".jpgsone").attr("src"),			
 					//要放大图片的宽和高
 					bigBoxWidth:385,
 					bigBoxHeight:520,
@@ -100,51 +175,3 @@ $.each(
 );
 
 
-// 获取cookie
-getCookie("clothesId");
-// console.log(getCookie("clothesId"));
-
-// 发送ajax
-$.ajax({
-	type:"get",
-	url:"php/getGoodsInfo.php",
-	async:true,
-	data:{
-		goodsId:data.goodsId
-	},
-	success:function(data){
-		// console.log(data.goodsId);
-		// if(data.goodsId == getCookie("clothesId")){
-			// 店名
-			$("$dianming").html(data.beiyong11);
-			console.log($("$dianming").html(data.beiyong11));
-			// 描述
-			$("#descript").html(data.goodsDesc);
-			// 大图
-			$(".pho_top img").attr("src",data.goodsImg);
-			// 小图
-			$(".jpgs1").attr("src",data.beiyong1);
-			$(".jpgs2").attr("src",data.beiyong2);
-			$(".jpgs3").attr("src",data.beiyong3);
-			$(".jpgs4").attr("src",data.beiyong4);
-			$(".jpgs5").attr("src",data.beiyong5);
-			$(".jpgs6").attr("src",data.beiyong6);
-			// 商品编号
-			$("#bianhao").html(data.goodsId);
-			// 商品名称
-			$("#goodsname").html(data.goodsname);
-			// 商品当前价格
-			$("#goodsprice").html(data.goodsprice);
-			// 评论数量
-			$("#discuss").html(data.beiyong12);
-			// 尺码
-			$("#sizeS").html(data.beiyong7);
-			$("#sizeM").html(data.beiyong8);
-			$("#sizeL").html(data.beiyong9);
-			// 剩余数量
-			$("#goodscount").html(data.goodscount);
-			$("#goodsimg").attr("src",data.goodsImg);
-		// }
-	},
-	dataType:"json"
-});

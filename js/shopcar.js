@@ -1,3 +1,50 @@
+// 获取cookie
+var vipname = getCookie("username");
+// 显示购物车
+// 发送ajax
+$.ajax({
+	type:"get",
+	url:"php/getShoppingCart.php",
+	async:true,
+	data:{
+		"vipName":vipname
+	},
+	success:function(data){
+		for(var i=0;i<data.length;i++){
+			var carList = '';
+			if(data.goodsId==vipname){
+				console.log(data);
+				carList += "<div class='lis_good'>\
+					<div class='good_left'>\
+						<input type='checkbox' checked />\
+						<img src='"+data[i].goodsImg+"' alt='' class='carimg' />\
+					</div>\
+					<div class='good_center'>\
+						<span >"+data[i].goodsName+"("+data[i].goodsId+")</span>\
+						<span>品牌：所然 尺寸:s 颜色：黄色</span>\
+					</div>\
+					<div class='good_right'>\
+						<span class='cost'><span>￥</span><span class='cost1'>"+data[i].goodsPeice+"</span>\
+						</span>\
+						<span class='jiajian'>\
+							<span class='jian'>-</span>\
+							<span class='sums'>"+data[i].goodsCount+"</span>\
+							<span class='jia'>+</span>\
+						</span>\
+						<span class='cost_he'><span>￥</span><span class='cost_he1'>199.00</span></span>\
+						<span class='change'>\
+							<span class='bian'>修改</span>\
+							<span class='del'>删除</span>\
+						</span>\
+					</div>\
+				</div>";
+			}
+		}
+	},
+	dataType:"json"
+});
+
+
 // 点击全部按钮，商品全部选中 
 	$(".all").find("input[type='checkbox']").click(function(){
 		if($(".all").find("input[type='checkbox']").prop('checked')){

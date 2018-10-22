@@ -119,13 +119,13 @@ function getColor(){
 }
 // 验证码(错误)
 $("#testCode").onfocus = function(){
-		$("#testCode").value = "";
-		$("#testCode").style.cssText = "border-color:#e30165;";
+	$("#testCode").value = "";
+	$("#testCode").style.cssText = "border-color:#e30165;";
 }
 let _s="close";
 
 window.onbeforeunload = function(){
-	   _s="fresh";
+	 _s="fresh";
 }
 let currCodes = '';
 function toFreshen(){
@@ -154,29 +154,41 @@ $("#testCode").onblur = function(){
 		$("#codepoint").style.visibility = "visible";
 	}
 }
+
+
 // 注册提交
 $("#sub").onclick = function(){
-		// 1.创建对象
-		let xhr = new XMLHttpRequest();
-		// 2.设置参数
-		xhr.open("post","php/loginajax.php",true);
-		// 3.设置回调函数
-		xhr.onreadystatechange = function(){
-			if(xhr.readyState==4 && xhr.status==200){
-				// 5.接收响应
-				let str = xhr.responseText;
-				if(str=="1"){
-					location.href="register.html";
-					// alert("注册成功！");
-				}else if(str=="-1"){
-					alert("注册失败！");
-				}else{
-					alert("注册失败！服务器出错~");
-				}
+	// 条款是否同意
+	if($("#check").checked==true){
+		$("#sub").disabled==true;
+	}else{
+		$("#sub").disabled==false;
+		alert("请选中注册条款！");
+		return;
+	}
+	// 1.创建对象
+	let xhr = new XMLHttpRequest();
+	// 2.设置参数
+	xhr.open("post","php/loginajax.php",true);
+	// 3.设置回调函数
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			// 5.接收响应
+			let str = xhr.responseText;
+			if(str=="1"){
+				location.href="register.html";
+				// alert("注册成功！");
+			}else if(str=="-1"){
+				alert("注册失败！");
+			}else{
+				alert("注册失败！服务器出错~");
 			}
 		}
-		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		// 4.发送请求
-		let ste = "username="+$("#user").value+"&password="+$("#pwd").value;
-		xhr.send(ste);
+	}
+	xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	// 4.发送请求
+	let str = "username="+$("#user").value+"&password="+$("#pwd").value;
+	xhr.send(str);	
 }
+
+

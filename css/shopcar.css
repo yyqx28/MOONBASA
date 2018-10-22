@@ -140,6 +140,10 @@ a{
 	border:1px solid #8e8f8f;
 	margin-right: 20px;
 }
+.good_left img{
+	width:47px;
+	height:61px;
+}
 .lis_good .good_center{
 	width:470px;
 	height: 56px;

@@ -17,8 +17,8 @@
 				<a href="login.html"><span class="imp_zhuce">注册</span></a>
 			</div>
 			<div class="imp_bottom">
-				<form action="post" method="">
-					<input type="text" value="手机号/邮箱"  id="user"/>
+				<!-- <form method="post" action="php/loginajax.php"> -->
+					<input type="text" placeholder="手机号/邮箱"   id="user"/>
 					<img src="img/a1.jpg" alt="" class="userImg" />
 					<div class=" point" id="userpoint" >
 						<img src="img/stop.jpg" alt=""/>
@@ -36,7 +36,7 @@
 						请输入正确的验证码！
 					</div>
 					<input type="text" value="请输入动态验证码" class="actma" />
-					<input type="button" value="获取动态验证码" class="getma" />
+					<input type="button" placeholder="获取动态验证码" class="getma" />
 					<div class=" point" id="actCodepoint">
 						<img src="img/stop.jpg" alt=""/>
 						请输入动态验证码！
@@ -53,10 +53,10 @@
 						两次密码输入不一致！
 					</div>
 					<img src="img/a2.jpg" alt="" class="pwdImgOk" />
-					<input type="submit" value="同意以下协议，提交" id="sub" />
+					<button id="sub" >同意以下协议，提交</button>
 					<input type="checkbox" class="selectSub" id="check" />
 					<p>同意<span>梦芭莎注册条款</span></p>
-				</form>
+				<!-- </form> -->
 			</div>
 		</div>
 	</div>
@@ -75,5 +75,6 @@
 	</div>
 </body>
 </html>
+<script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/tools.js"></script>
 <script type="text/javascript" src="js/login.js"></script>

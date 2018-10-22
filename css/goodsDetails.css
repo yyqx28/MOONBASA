@@ -438,7 +438,7 @@ ul{
 }
 /*数量*/
 .goods_rate .clo_sum{
-	width: 190px;
+	width: 210px;
 	height:34px;
 	margin-bottom: 18px;
 }
@@ -450,6 +450,7 @@ ul{
 	line-height: 34px;
 	float: left;
 	margin-right: 10px;
+	background:#fff;
 }
 .goods_rate .clo_sum .sums{
 	width:79px;

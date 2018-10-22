@@ -64,7 +64,7 @@ function check(str,style){
 
 // 立即登录
 $("#sub").onclick = function(){
-	if($("#check").style.checked==checked){
+	// if($("#check").style.checked==checked){
 		// 1.创建对象
 		let xhr = new XMLHttpRequest();
 		// 2.设置参数
@@ -74,10 +74,10 @@ $("#sub").onclick = function(){
 			if(xhr.readyState==4&&xhr.status==200){
 				// 5.接收响应
 				let str = xhr.responseText;
-				if(str=="登录成功"){
+				if(str=="1"){
 					location.href="index.html";
-				}else if(str=="登录失败"){
-					alert("登录失败！");
+				}else if(str=="0"){
+					alert("登录失败");
 				}
 			}
 		}
@@ -85,5 +85,9 @@ $("#sub").onclick = function(){
 		// 4.发送请求
 		let str = "username="+$("#user").value+"&password="+$("#pwd").value;
 		xhr.send(str);
-	}
+		// 设置cookie
+		var names = $("#user").value;
+		setCookie("username",names,7);
+	// }
 }
+
